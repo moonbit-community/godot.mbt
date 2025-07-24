@@ -582,27 +582,109 @@ pub(all) struct GDExtensionMethodInfo {
 	default_arguments: GDExtensionVariantPtr
 }
 
+/// ```c
 /// typedef const GDExtensionPropertyInfo *(*GDExtensionClassGetPropertyList)(GDExtensionClassInstancePtr p_instance, uint32_t *r_count);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr, UInt) -> GDExtensionPropertyInfo] as GDExtensionClassGetPropertyList
+
+/// ```c
 /// typedef void (*GDExtensionClassFreePropertyList)(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr, GDExtensionPropertyInfo) -> Unit] as GDExtensionClassFreePropertyList
+
+/// ```c
 /// typedef void (*GDExtensionClassFreePropertyList2)(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list, uint32_t p_count);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr, GDExtensionPropertyInfo, UInt) -> Unit] as GDExtensionClassFreePropertyList2
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionClassPropertyCanRevert)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr) -> GDExtensionBool] as GDExtensionClassPropertyCanRevert
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionClassPropertyGetRevert)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> GDExtensionBool] as GDExtensionClassPropertyGetRevert
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionClassValidateProperty)(GDExtensionClassInstancePtr p_instance, GDExtensionPropertyInfo *p_property);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr, GDExtensionPropertyInfo) -> GDExtensionBool] as GDExtensionClassValidateProperty
+
+/// ```c
 /// typedef void (*GDExtensionClassNotification)(GDExtensionClassInstancePtr p_instance, int32_t p_what); // Deprecated. Use GDExtensionClassNotification2 instead.
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr, Int) -> Unit] as GDExtensionClassNotification
+
+/// ```c
 /// typedef void (*GDExtensionClassNotification2)(GDExtensionClassInstancePtr p_instance, int32_t p_what, GDExtensionBool p_reversed);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr, Int, GDExtensionBool) -> Unit] as GDExtensionClassNotification2
+
+/// ```c
 /// typedef void (*GDExtensionClassToString)(GDExtensionClassInstancePtr p_instance, GDExtensionBool *r_is_valid, GDExtensionStringPtr p_out);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr, GDExtensionBool, GDExtensionStringPtr) -> Unit] as GDExtensionClassToString
+
+/// ```c
 /// typedef void (*GDExtensionClassReference)(GDExtensionClassInstancePtr p_instance);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr) -> Unit] as GDExtensionClassReference
+
+/// ```c
 /// typedef void (*GDExtensionClassUnreference)(GDExtensionClassInstancePtr p_instance);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr) -> Unit] as GDExtensionClassUnreference
+
+/// ```c
 /// typedef void (*GDExtensionClassCallVirtual)(GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit] as GDExtensionClassCallVirtual
+
+/// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionClassCreateInstance)(void *p_class_userdata);
+/// ```
+pub typealias FuncRef[(VoidPtr) -> GDExtensionObjectPtr] as GDExtensionClassCreateInstance
+
+/// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionClassCreateInstance2)(void *p_class_userdata, GDExtensionBool p_notify_postinitialize);
+/// ```
+pub typealias FuncRef[(VoidPtr, GDExtensionBool) -> GDExtensionObjectPtr] as GDExtensionClassCreateInstance2
+
+/// ```c
 /// typedef void (*GDExtensionClassFreeInstance)(void *p_class_userdata, GDExtensionClassInstancePtr p_instance);
+/// ```
+pub typealias FuncRef[(VoidPtr, GDExtensionClassInstancePtr) -> Unit] as GDExtensionClassFreeInstance
+
+/// ```c
 /// typedef GDExtensionClassInstancePtr (*GDExtensionClassRecreateInstance)(void *p_class_userdata, GDExtensionObjectPtr p_object);
+/// ```
+pub typealias FuncRef[(VoidPtr, GDExtensionObjectPtr) -> GDExtensionClassInstancePtr] as GDExtensionClassRecreateInstance
+/// ```c
 /// typedef GDExtensionClassCallVirtual (*GDExtensionClassGetVirtual)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name);
+/// ```
+pub typealias FuncRef[(VoidPtr, GDExtensionConstStringNamePtr) -> GDExtensionClassCallVirtual] as GDExtensionClassGetVirtual
+
+/// ```c
 /// typedef GDExtensionClassCallVirtual (*GDExtensionClassGetVirtual2)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name, uint32_t p_hash);
+/// ```
+pub typealias FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt) -> GDExtensionClassCallVirtual] as GDExtensionClassGetVirtual2
+
+/// ```c
 /// typedef void *(*GDExtensionClassGetVirtualCallData)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name);
+/// ```
+pub typealias FuncRef[(VoidPtr, GDExtensionConstStringNamePtr) -> VoidPtr] as GDExtensionClassGetVirtualCallData
+
+/// ```c
 /// typedef void *(*GDExtensionClassGetVirtualCallData2)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name, uint32_t p_hash);
+/// ```
+pub typealias FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt) -> VoidPtr] as GDExtensionClassGetVirtualCallData2
+
+/// ```c
 /// typedef void (*GDExtensionClassCallVirtualWithData)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, void *p_virtual_call_userdata, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
+/// ```
+pub typealias FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, VoidPtr, GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit] as GDExtensionClassCallVirtualWithData
 /// 
 /// typedef struct {
 /// 	GDExtensionBool is_virtual;
