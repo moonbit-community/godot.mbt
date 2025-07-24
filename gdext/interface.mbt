@@ -1000,17 +1000,45 @@ pub(all) struct GDExtensionClassVirtualMethodInfo {
 	arguments_metadata: GDExtensionClassMethodArgumentMetadata
 } 
 
+/// ```c
 /// typedef void (*GDExtensionCallableCustomCall)(void *callable_userdata, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error);
+/// ```
+pub typealias FuncRef[(VoidPtr, GDExtensionConstVariantPtr, GDExtensionInt, GDExtensionVariantPtr, GDExtensionCallError) -> Unit] as GDExtensionCallableCustomCall
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionCallableCustomIsValid)(void *callable_userdata);
+/// ```
+pub typealias FuncRef[(VoidPtr) -> GDExtensionBool] as GDExtensionCallableCustomIsValid
+
+/// ```c
 /// typedef void (*GDExtensionCallableCustomFree)(void *callable_userdata);
-/// 
+/// ```
+pub typealias FuncRef[(VoidPtr) -> Unit] as GDExtensionCallableCustomFree
+
+/// ```c
 /// typedef uint32_t (*GDExtensionCallableCustomHash)(void *callable_userdata);
+/// ```
+pub typealias FuncRef[(VoidPtr) -> UInt] as GDExtensionCallableCustomHash
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionCallableCustomEqual)(void *callable_userdata_a, void *callable_userdata_b);
+/// ```
+pub typealias FuncRef[(VoidPtr, VoidPtr) -> GDExtensionBool] as GDExtensionCallableCustomEqual
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionCallableCustomLessThan)(void *callable_userdata_a, void *callable_userdata_b);
-/// 
+/// ```
+pub typealias FuncRef[(VoidPtr, VoidPtr) -> GDExtensionBool] as GDExtensionCallableCustomLessThan
+
+/// ```c
 /// typedef void (*GDExtensionCallableCustomToString)(void *callable_userdata, GDExtensionBool *r_is_valid, GDExtensionStringPtr r_out);
-/// 
+/// ```
+pub typealias FuncRef[(VoidPtr, GDExtensionBool, GDExtensionStringPtr) -> Unit] as GDExtensionCallableCustomToString
+
+/// ```c
 /// typedef GDExtensionInt (*GDExtensionCallableCustomGetArgumentCount)(void *callable_userdata, GDExtensionBool *r_is_valid);
+/// ```
+pub typealias FuncRef[(VoidPtr, GDExtensionBool) -> GDExtensionInt] as GDExtensionCallableCustomGetArgumentCount
 /// 
 /// typedef struct {
 /// 	/* Only `call_func` and `token` are strictly required, however, `object_id` should be passed if its not a static method.
@@ -1042,7 +1070,21 @@ pub(all) struct GDExtensionClassVirtualMethodInfo {
 /// 
 /// 	GDExtensionCallableCustomToString to_string_func;
 /// } GDExtensionCallableCustomInfo; // Deprecated. Use GDExtensionCallableCustomInfo2 instead.
-/// 
+/// ```
+pub(all) struct GDExtensionCallableCustomInfo {
+	callable_userdata: VoidPtr
+	token: VoidPtr
+	object_id: GDObjectInstanceID
+	call_func: GDExtensionCallableCustomCall
+	is_valid_func: GDExtensionCallableCustomIsValid
+	free_func: GDExtensionCallableCustomFree
+	hash_func: GDExtensionCallableCustomHash
+	equal_func: GDExtensionCallableCustomEqual
+	less_than_func: GDExtensionCallableCustomLessThan
+	to_string_func: GDExtensionCallableCustomToString
+}
+
+/// ```c
 /// typedef struct {
 /// 	/* Only `call_func` and `token` are strictly required, however, `object_id` should be passed if its not a static method.
 /// 	 *
@@ -1075,54 +1117,180 @@ pub(all) struct GDExtensionClassVirtualMethodInfo {
 /// 
 /// 	GDExtensionCallableCustomGetArgumentCount get_argument_count_func;
 /// } GDExtensionCallableCustomInfo2;
+/// ```
+pub(all) struct GDExtensionCallableCustomInfo2 {
+	callable_userdata: VoidPtr
+	token: VoidPtr
+	object_id: GDObjectInstanceID
+	call_func: GDExtensionCallableCustomCall
+	is_valid_func: GDExtensionCallableCustomIsValid
+	free_func: GDExtensionCallableCustomFree
+	hash_func: GDExtensionCallableCustomHash
+	equal_func: GDExtensionCallableCustomEqual
+	less_than_func: GDExtensionCallableCustomLessThan
+	to_string_func: GDExtensionCallableCustomToString
+	get_argument_count_func: GDExtensionCallableCustomGetArgumentCount
+}
+
+/// --- SCRIPT INSTANCE EXTENSION
 /// 
-/// /* SCRIPT INSTANCE EXTENSION */
-/// 
+/// ```c
 /// typedef void *GDExtensionScriptInstanceDataPtr; // Pointer to custom ScriptInstance native implementation.
-/// 
+/// ```
+#external
+pub type GDExtensionScriptInstanceDataPtr
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceSet)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr) -> GDExtensionBool] as GDExtensionScriptInstanceSet
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceGet)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> GDExtensionBool] as GDExtensionScriptInstanceGet
+
+/// ```c
 /// typedef const GDExtensionPropertyInfo *(*GDExtensionScriptInstanceGetPropertyList)(GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionPropertyInfo] as GDExtensionScriptInstanceGetPropertyList
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstanceFreePropertyList)(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionPropertyInfo *p_list); // Deprecated. Use GDExtensionScriptInstanceFreePropertyList2 instead.
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> Unit] as GDExtensionScriptInstanceFreePropertyList
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstanceFreePropertyList2)(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionPropertyInfo *p_list, uint32_t p_count);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo, UInt) -> Unit] as GDExtensionScriptInstanceFreePropertyList2
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceGetClassCategory)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionPropertyInfo *p_class_category);
-/// 
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> GDExtensionBool] as GDExtensionScriptInstanceGetClassCategory
+
+/// ```c
 /// typedef GDExtensionVariantType (*GDExtensionScriptInstanceGetPropertyType)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionBool) -> GDExtensionVariantType] as GDExtensionScriptInstanceGetPropertyType
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceValidateProperty)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionPropertyInfo *p_property);
-/// 
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> GDExtensionBool] as GDExtensionScriptInstanceValidateProperty
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstancePropertyCanRevert)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr) -> GDExtensionBool] as GDExtensionScriptInstancePropertyCanRevert
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstancePropertyGetRevert)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> GDExtensionBool] as GDExtensionScriptInstancePropertyGetRevert
 /// 
+/// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionScriptInstanceGetOwner)(GDExtensionScriptInstanceDataPtr p_instance);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionObjectPtr] as GDExtensionScriptInstanceGetOwner
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstancePropertyStateAdd)(GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value, void *p_userdata);
+/// ```
+pub typealias FuncRef[(GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr, VoidPtr) -> Unit] as GDExtensionScriptInstancePropertyStateAdd
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstanceGetPropertyState)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionScriptInstancePropertyStateAdd p_add_func, void *p_userdata);
-/// 
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionScriptInstancePropertyStateAdd, VoidPtr) -> Unit] as GDExtensionScriptInstanceGetPropertyState
+
+/// ```c
 /// typedef const GDExtensionMethodInfo *(*GDExtensionScriptInstanceGetMethodList)(GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionMethodInfo] as GDExtensionScriptInstanceGetMethodList
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstanceFreeMethodList)(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionMethodInfo *p_list); // Deprecated. Use GDExtensionScriptInstanceFreeMethodList2 instead.
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo) -> Unit] as GDExtensionScriptInstanceFreeMethodList
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstanceFreeMethodList2)(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionMethodInfo *p_list, uint32_t p_count);
-/// 
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo, UInt) -> Unit] as GDExtensionScriptInstanceFreeMethodList2
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceHasMethod)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name);
-/// 
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr) -> GDExtensionBool] as GDExtensionScriptInstanceHasMethod
+
+/// ```c
 /// typedef GDExtensionInt (*GDExtensionScriptInstanceGetMethodArgumentCount)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid);
-/// 
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionBool) -> GDExtensionInt] as GDExtensionScriptInstanceGetMethodArgumentCount
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstanceCall)(GDExtensionScriptInstanceDataPtr p_self, GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr, GDExtensionInt, GDExtensionVariantPtr, GDExtensionCallError) -> Unit] as GDExtensionScriptInstanceCall
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstanceNotification)(GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what); // Deprecated. Use GDExtensionScriptInstanceNotification2 instead.
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, Int) -> Unit] as GDExtensionScriptInstanceNotification
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstanceNotification2)(GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what, GDExtensionBool p_reversed);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, Int, GDExtensionBool) -> Unit] as GDExtensionScriptInstanceNotification2
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstanceToString)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionBool *r_is_valid, GDExtensionStringPtr r_out);
-/// 
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionBool, GDExtensionStringPtr) -> Unit] as GDExtensionScriptInstanceToString
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstanceRefCountIncremented)(GDExtensionScriptInstanceDataPtr p_instance);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> Unit] as GDExtensionScriptInstanceRefCountIncremented
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceRefCountDecremented)(GDExtensionScriptInstanceDataPtr p_instance);
-/// 
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionBool] as GDExtensionScriptInstanceRefCountDecremented
+
+/// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionScriptInstanceGetScript)(GDExtensionScriptInstanceDataPtr p_instance);
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionObjectPtr] as GDExtensionScriptInstanceGetScript
+
+/// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceIsPlaceholder)(GDExtensionScriptInstanceDataPtr p_instance);
-/// 
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionBool] as GDExtensionScriptInstanceIsPlaceholder
+
+/// ```c
 /// typedef void *GDExtensionScriptLanguagePtr;
-/// 
+/// ```
+#external
+pub type GDExtensionScriptLanguagePtr
+
+/// ```c
 /// typedef GDExtensionScriptLanguagePtr (*GDExtensionScriptInstanceGetLanguage)(GDExtensionScriptInstanceDataPtr p_instance);
-/// 
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionScriptLanguagePtr] as GDExtensionScriptInstanceGetLanguage
+
+/// ```c
 /// typedef void (*GDExtensionScriptInstanceFree)(GDExtensionScriptInstanceDataPtr p_instance);
-/// 
+/// ```
+pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> Unit] as GDExtensionScriptInstanceFree
+
+/// ```c
 /// typedef void *GDExtensionScriptInstancePtr; // Pointer to ScriptInstance.
+/// ```
+#external
+pub type GDExtensionScriptInstancePtr
 /// 
 /// typedef struct {
 /// 	GDExtensionScriptInstanceSet set_func;
@@ -1162,7 +1330,34 @@ pub(all) struct GDExtensionClassVirtualMethodInfo {
 /// 	GDExtensionScriptInstanceFree free_func;
 /// 
 /// } GDExtensionScriptInstanceInfo; // Deprecated. Use GDExtensionScriptInstanceInfo3 instead.
-/// 
+/// ```
+pub(all) struct GDExtensionScriptInstanceInfo {
+	set_func: GDExtensionScriptInstanceSet
+	get_func: GDExtensionScriptInstanceGet
+	get_property_list_func: GDExtensionScriptInstanceGetPropertyList
+	free_property_list_func: GDExtensionScriptInstanceFreePropertyList
+	property_can_revert_func: GDExtensionScriptInstancePropertyCanRevert
+	property_get_revert_func: GDExtensionScriptInstancePropertyGetRevert
+	get_owner_func: GDExtensionScriptInstanceGetOwner
+	get_property_state_func: GDExtensionScriptInstanceGetPropertyState
+	get_method_list_func: GDExtensionScriptInstanceGetMethodList
+	free_method_list_func: GDExtensionScriptInstanceFreeMethodList
+	get_property_type_func: GDExtensionScriptInstanceGetPropertyType
+	has_method_func: GDExtensionScriptInstanceHasMethod
+	call_func: GDExtensionScriptInstanceCall
+	notification_func: GDExtensionScriptInstanceNotification
+	to_string_func: GDExtensionScriptInstanceToString
+	refcount_incremented_func: GDExtensionScriptInstanceRefCountIncremented
+	refcount_decremented_func: GDExtensionScriptInstanceRefCountDecremented
+	get_script_func: GDExtensionScriptInstanceGetScript
+	is_placeholder_func: GDExtensionScriptInstanceIsPlaceholder
+	set_fallback_func: GDExtensionScriptInstanceSet
+	get_fallback_func: GDExtensionScriptInstanceGet
+	get_language_func: GDExtensionScriptInstanceGetLanguage
+	free_func: GDExtensionScriptInstanceFree
+}
+
+/// ```c
 /// typedef struct {
 /// 	GDExtensionScriptInstanceSet set_func;
 /// 	GDExtensionScriptInstanceGet get_func;
@@ -1203,7 +1398,36 @@ pub(all) struct GDExtensionClassVirtualMethodInfo {
 /// 	GDExtensionScriptInstanceFree free_func;
 /// 
 /// } GDExtensionScriptInstanceInfo2; // Deprecated. Use GDExtensionScriptInstanceInfo3 instead.
-/// 
+/// ```
+pub(all) struct GDExtensionScriptInstanceInfo2 {
+	set_func: GDExtensionScriptInstanceSet
+	get_func: GDExtensionScriptInstanceGet
+	get_property_list_func: GDExtensionScriptInstanceGetPropertyList
+	free_property_list_func: GDExtensionScriptInstanceFreePropertyList
+	get_class_category_func: GDExtensionScriptInstanceGetClassCategory
+	property_can_revert_func: GDExtensionScriptInstancePropertyCanRevert
+	property_get_revert_func: GDExtensionScriptInstancePropertyGetRevert
+	get_owner_func: GDExtensionScriptInstanceGetOwner
+	get_property_state_func: GDExtensionScriptInstanceGetPropertyState
+	get_method_list_func: GDExtensionScriptInstanceGetMethodList
+	free_method_list_func: GDExtensionScriptInstanceFreeMethodList
+	get_property_type_func: GDExtensionScriptInstanceGetPropertyType
+	validate_property_func: GDExtensionScriptInstanceValidateProperty
+	has_method_func: GDExtensionScriptInstanceHasMethod
+	call_func: GDExtensionScriptInstanceCall
+	notification_func: GDExtensionScriptInstanceNotification2
+	to_string_func: GDExtensionScriptInstanceToString
+	refcount_incremented_func: GDExtensionScriptInstanceRefCountIncremented
+	refcount_decremented_func: GDExtensionScriptInstanceRefCountDecremented
+	get_script_func: GDExtensionScriptInstanceGetScript
+	is_placeholder_func: GDExtensionScriptInstanceIsPlaceholder
+	set_fallback_func: GDExtensionScriptInstanceSet
+	get_fallback_func: GDExtensionScriptInstanceGet
+	get_language_func: GDExtensionScriptInstanceGetLanguage
+	free_func: GDExtensionScriptInstanceFree
+}
+
+/// ```c
 /// typedef struct {
 /// 	GDExtensionScriptInstanceSet set_func;
 /// 	GDExtensionScriptInstanceGet get_func;
@@ -1246,9 +1470,39 @@ pub(all) struct GDExtensionClassVirtualMethodInfo {
 /// 	GDExtensionScriptInstanceFree free_func;
 /// 
 /// } GDExtensionScriptInstanceInfo3;
-/// 
-/// /* INITIALIZATION */
-/// 
+/// ```
+pub(all) struct GDExtensionScriptInstanceInfo3 {
+	set_func: GDExtensionScriptInstanceSet
+	get_func: GDExtensionScriptInstanceGet
+	get_property_list_func: GDExtensionScriptInstanceGetPropertyList
+	free_property_list_func: GDExtensionScriptInstanceFreePropertyList2
+	get_class_category_func: GDExtensionScriptInstanceGetClassCategory
+	property_can_revert_func: GDExtensionScriptInstancePropertyCanRevert
+	property_get_revert_func: GDExtensionScriptInstancePropertyGetRevert
+	get_owner_func: GDExtensionScriptInstanceGetOwner
+	get_property_state_func: GDExtensionScriptInstanceGetPropertyState
+	get_method_list_func: GDExtensionScriptInstanceGetMethodList
+	free_method_list_func: GDExtensionScriptInstanceFreeMethodList2
+	get_property_type_func: GDExtensionScriptInstanceGetPropertyType
+	validate_property_func: GDExtensionScriptInstanceValidateProperty
+	has_method_func: GDExtensionScriptInstanceHasMethod
+	get_method_argument_count_func: GDExtensionScriptInstanceGetMethodArgumentCount
+	call_func: GDExtensionScriptInstanceCall
+	notification_func: GDExtensionScriptInstanceNotification2
+	to_string_func: GDExtensionScriptInstanceToString
+	refcount_incremented_func: GDExtensionScriptInstanceRefCountIncremented
+	refcount_decremented_func: GDExtensionScriptInstanceRefCountDecremented
+	get_script_func: GDExtensionScriptInstanceGetScript
+	is_placeholder_func: GDExtensionScriptInstanceIsPlaceholder
+	set_fallback_func: GDExtensionScriptInstanceSet
+	get_fallback_func: GDExtensionScriptInstanceGet
+	get_language_func: GDExtensionScriptInstanceGetLanguage
+	free_func: GDExtensionScriptInstanceFree
+}
+
+/// --- INITIALIZATION
+
+/// ```c
 /// typedef enum {
 /// 	GDEXTENSION_INITIALIZATION_CORE,
 /// 	GDEXTENSION_INITIALIZATION_SERVERS,
@@ -1256,7 +1510,16 @@ pub(all) struct GDExtensionClassVirtualMethodInfo {
 /// 	GDEXTENSION_INITIALIZATION_EDITOR,
 /// 	GDEXTENSION_MAX_INITIALIZATION_LEVEL,
 /// } GDExtensionInitializationLevel;
-/// 
+/// ```
+pub(all) enum GDExtensionInitializationLevel {
+	GDEXTENSION_INITIALIZATION_CORE
+	GDEXTENSION_INITIALIZATION_SERVERS
+	GDEXTENSION_INITIALIZATION_SCENE
+	GDEXTENSION_INITIALIZATION_EDITOR
+	GDEXTENSION_MAX_INITIALIZATION_LEVEL
+}
+
+/// ```c
 /// typedef struct {
 /// 	/* Minimum initialization level required.
 /// 	 * If Core or Servers, the extension needs editor or game restart to take effect */
@@ -1267,7 +1530,21 @@ pub(all) struct GDExtensionClassVirtualMethodInfo {
 /// 	void (*initialize)(void *userdata, GDExtensionInitializationLevel p_level);
 /// 	void (*deinitialize)(void *userdata, GDExtensionInitializationLevel p_level);
 /// } GDExtensionInitialization;
-/// 
+/// ```
+pub(all) struct GDExtensionInitialization {
+	minimum_initialization_level: GDExtensionInitializationLevel
+	userdata: VoidPtr
+	initialize: FuncRef[(VoidPtr, GDExtensionInitializationLevel) -> Unit]
+	deinitialize: FuncRef[(VoidPtr, GDExtensionInitializationLevel) -> Unit]
+}
+
+/// ```c
 /// typedef void (*GDExtensionInterfaceFunctionPtr)();
+/// ```
+pub typealias FuncRef[() -> Unit] as GDExtensionInterfaceFunctionPtr
+
+/// ```c
 /// typedef GDExtensionInterfaceFunctionPtr (*GDExtensionInterfaceGetProcAddress)(const char *p_function_name);
+/// ```
+pub typealias FuncRef[(String) -> GDExtensionInterfaceFunctionPtr] as GDExtensionInterfaceGetProcAddress
 /// 
