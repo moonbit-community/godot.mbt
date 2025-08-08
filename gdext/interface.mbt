@@ -829,7 +829,7 @@ pub(all) struct GDExtensionMethodInfo {
 /// typedef const GDExtensionPropertyInfo *(*GDExtensionClassGetPropertyList)(GDExtensionClassInstancePtr p_instance, uint32_t *r_count);
 /// ```
 pub typealias FuncRef[
-  (GDExtensionClassInstancePtr, UInt) -> GDExtensionPropertyInfoCRef,
+  (GDExtensionClassInstancePtr, Ref[UInt]) -> GDExtensionPropertyInfoCRef,
 ] as GDExtensionClassGetPropertyList
 
 ///|
