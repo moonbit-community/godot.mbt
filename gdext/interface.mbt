@@ -36,10 +36,10 @@ pub type VoidPtr
 // typedef uint16_t char16_t;
 
 ///|
-pub typealias UInt as Char32
+pub type Char32 = UInt
 
 ///|
-pub typealias UInt16 as Char16
+pub type Char16 = UInt16
 
 ///|
 /// 
@@ -417,7 +417,7 @@ pub type GDExtensionMethodBindPtr
 /// ```c
 /// typedef int64_t GDExtensionInt;
 /// ```
-pub typealias Int64 as GDExtensionInt
+pub type GDExtensionInt = Int64
 
 ///|
 ///
@@ -426,7 +426,7 @@ pub typealias Int64 as GDExtensionInt
 /// ```c
 /// typedef uint8_t GDExtensionBool;
 /// ```
-pub typealias Byte as GDExtensionBool
+pub type GDExtensionBool = Byte
 
 ///|
 ///
@@ -435,7 +435,7 @@ pub typealias Byte as GDExtensionBool
 /// ```c
 /// typedef uint64_t GDObjectInstanceID;
 /// ```
-pub typealias UInt64 as GDObjectInstanceID
+pub type GDObjectInstanceID = UInt64
 
 ///|
 ///
@@ -506,9 +506,9 @@ pub(all) struct GDExtensionCallError {
 /// ```c
 /// typedef void (*GDExtensionVariantFromTypeConstructorFunc)(GDExtensionUninitializedVariantPtr, GDExtensionTypePtr);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionVariantFromTypeConstructorFunc = FuncRef[
   (GDExtensionUninitializedVariantPtr, GDExtensionTypePtr) -> Unit,
-] as GDExtensionVariantFromTypeConstructorFunc
+]
 
 ///|
 ///
@@ -517,9 +517,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionTypeFromVariantConstructorFunc)(GDExtensionUninitializedTypePtr, GDExtensionVariantPtr);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionTypeFromVariantConstructorFunc = FuncRef[
   (GDExtensionUninitializedTypePtr, GDExtensionVariantPtr) -> Unit,
-] as GDExtensionTypeFromVariantConstructorFunc
+]
 
 ///|
 ///
@@ -528,7 +528,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void *(*GDExtensionVariantGetInternalPtrFunc)(GDExtensionVariantPtr);
 /// ```
-pub typealias FuncRef[(GDExtensionVariantPtr) -> VoidPtr] as GDExtensionVariantGetInternalPtrFunc
+pub type GDExtensionVariantGetInternalPtrFunc = FuncRef[(GDExtensionVariantPtr) -> VoidPtr]
 
 ///|
 ///
@@ -537,9 +537,9 @@ pub typealias FuncRef[(GDExtensionVariantPtr) -> VoidPtr] as GDExtensionVariantG
 /// ```c
 /// typedef void (*GDExtensionPtrOperatorEvaluator)(GDExtensionConstTypePtr p_left, GDExtensionConstTypePtr p_right, GDExtensionTypePtr r_result);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionPtrOperatorEvaluator = FuncRef[
   (GDExtensionConstTypePtr, GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit,
-] as GDExtensionPtrOperatorEvaluator
+]
 
 ///|
 ///
@@ -548,14 +548,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionPtrBuiltInMethod)(GDExtensionTypePtr p_base, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_return, int p_argument_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionPtrBuiltInMethod = FuncRef[
   (
     GDExtensionTypePtr,
     GDExtensionConstTypePtr,
     FixedArray[GDExtensionTypePtr],
     Int,
   ) -> Unit,
-] as GDExtensionPtrBuiltInMethod
+]
 
 ///|
 ///
@@ -564,9 +564,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionPtrConstructor)(GDExtensionUninitializedTypePtr p_base, const GDExtensionConstTypePtr *p_args);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionPtrConstructor = FuncRef[
   (GDExtensionUninitializedTypePtr, Ref[GDExtensionConstTypePtr]) -> Unit,
-] as GDExtensionPtrConstructor
+]
 
 ///|
 ///
@@ -575,7 +575,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionPtrDestructor)(GDExtensionTypePtr p_base);
 /// ```
-pub typealias FuncRef[(GDExtensionTypePtr) -> Unit] as GDExtensionPtrDestructor
+pub type GDExtensionPtrDestructor = FuncRef[(GDExtensionTypePtr) -> Unit]
 
 ///|
 ///
@@ -584,7 +584,7 @@ pub typealias FuncRef[(GDExtensionTypePtr) -> Unit] as GDExtensionPtrDestructor
 /// ```c
 /// typedef void (*GDExtensionPtrSetter)(GDExtensionTypePtr p_base, GDExtensionConstTypePtr p_value);
 /// ```
-pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr) -> Unit] as GDExtensionPtrSetter
+pub type GDExtensionPtrSetter = FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr) -> Unit]
 
 ///|
 ///
@@ -593,7 +593,7 @@ pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr) -> Unit] as 
 /// ```c
 /// typedef void (*GDExtensionPtrGetter)(GDExtensionConstTypePtr p_base, GDExtensionTypePtr r_value);
 /// ```
-pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit] as GDExtensionPtrGetter
+pub type GDExtensionPtrGetter = FuncRef[(GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit]
 
 ///|
 ///
@@ -602,9 +602,9 @@ pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit] as 
 /// ```c
 /// typedef void (*GDExtensionPtrIndexedSetter)(GDExtensionTypePtr p_base, GDExtensionInt p_index, GDExtensionConstTypePtr p_value);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionPtrIndexedSetter = FuncRef[
   (GDExtensionTypePtr, GDExtensionInt, GDExtensionConstTypePtr) -> Unit,
-] as GDExtensionPtrIndexedSetter
+]
 
 ///|
 ///
@@ -613,9 +613,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionPtrIndexedGetter)(GDExtensionConstTypePtr p_base, GDExtensionInt p_index, GDExtensionTypePtr r_value);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionPtrIndexedGetter = FuncRef[
   (GDExtensionConstTypePtr, GDExtensionInt, GDExtensionTypePtr) -> Unit,
-] as GDExtensionPtrIndexedGetter
+]
 
 ///|
 ///
@@ -624,9 +624,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionPtrKeyedSetter)(GDExtensionTypePtr p_base, GDExtensionConstTypePtr p_key, GDExtensionConstTypePtr p_value);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionPtrKeyedSetter = FuncRef[
   (GDExtensionTypePtr, GDExtensionConstTypePtr, GDExtensionConstTypePtr) -> Unit,
-] as GDExtensionPtrKeyedSetter
+]
 
 ///|
 ///
@@ -635,9 +635,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionPtrKeyedGetter)(GDExtensionConstTypePtr p_base, GDExtensionConstTypePtr p_key, GDExtensionTypePtr r_value);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionPtrKeyedGetter = FuncRef[
   (GDExtensionConstTypePtr, GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit,
-] as GDExtensionPtrKeyedGetter
+]
 
 ///|
 ///
@@ -646,9 +646,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef uint32_t (*GDExtensionPtrKeyedChecker)(GDExtensionConstVariantPtr p_base, GDExtensionConstVariantPtr p_key);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionPtrKeyedChecker = FuncRef[
   (GDExtensionConstVariantPtr, GDExtensionConstVariantPtr) -> UInt,
-] as GDExtensionPtrKeyedChecker
+]
 
 ///|
 ///
@@ -657,9 +657,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionPtrUtilityFunction)(GDExtensionTypePtr r_return, const GDExtensionConstTypePtr *p_args, int p_argument_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionPtrUtilityFunction = FuncRef[
   (GDExtensionTypePtr, FixedArray[GDExtensionConstTypePtr], Int) -> Unit,
-] as GDExtensionPtrUtilityFunction
+]
 
 ///|
 ///
@@ -668,7 +668,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionClassConstructor)();
 /// ```
-pub typealias FuncRef[() -> GDExtensionObjectPtr] as GDExtensionClassConstructor
+pub type GDExtensionClassConstructor = FuncRef[() -> GDExtensionObjectPtr]
 
 ///|
 ///
@@ -677,7 +677,7 @@ pub typealias FuncRef[() -> GDExtensionObjectPtr] as GDExtensionClassConstructor
 /// ```c
 /// typedef void *(*GDExtensionInstanceBindingCreateCallback)(void *p_token, void *p_instance);
 /// ```
-pub typealias FuncRef[(VoidPtr, VoidPtr) -> VoidPtr] as GDExtensionInstanceBindingCreateCallback
+pub type GDExtensionInstanceBindingCreateCallback = FuncRef[(VoidPtr, VoidPtr) -> VoidPtr]
 
 ///|
 ///
@@ -686,7 +686,7 @@ pub typealias FuncRef[(VoidPtr, VoidPtr) -> VoidPtr] as GDExtensionInstanceBindi
 /// ```c
 /// typedef void (*GDExtensionInstanceBindingFreeCallback)(void *p_token, void *p_instance, void *p_binding);
 /// ```
-pub typealias FuncRef[(VoidPtr, VoidPtr, VoidPtr) -> Unit] as GDExtensionInstanceBindingFreeCallback
+pub type GDExtensionInstanceBindingFreeCallback = FuncRef[(VoidPtr, VoidPtr, VoidPtr) -> Unit]
 
 ///|
 ///
@@ -695,7 +695,7 @@ pub typealias FuncRef[(VoidPtr, VoidPtr, VoidPtr) -> Unit] as GDExtensionInstanc
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInstanceBindingReferenceCallback)(void *p_token, void *p_binding, GDExtensionBool p_reference);
 /// ```
-pub typealias FuncRef[(VoidPtr, VoidPtr, GDExtensionBool) -> GDExtensionBool] as GDExtensionInstanceBindingReferenceCallback
+pub type GDExtensionInstanceBindingReferenceCallback = FuncRef[(VoidPtr, VoidPtr, GDExtensionBool) -> GDExtensionBool]
 
 ///|
 ///
@@ -731,13 +731,13 @@ pub type GDExtensionClassInstancePtr
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionClassSet)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassSet = FuncRef[
   (
     GDExtensionClassInstancePtr,
     GDExtensionConstStringNamePtr,
     GDExtensionConstVariantPtr,
   ) -> GDExtensionBool,
-] as GDExtensionClassSet
+]
 
 ///|
 ///
@@ -746,13 +746,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionClassGet)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassGet = FuncRef[
   (
     GDExtensionClassInstancePtr,
     GDExtensionConstStringNamePtr,
     GDExtensionVariantPtr,
   ) -> GDExtensionBool,
-] as GDExtensionClassGet
+]
 
 ///|
 ///
@@ -761,7 +761,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef uint64_t (*GDExtensionClassGetRID)(GDExtensionClassInstancePtr p_instance);
 /// ```
-pub typealias FuncRef[(GDExtensionClassInstancePtr) -> UInt64] as GDExtensionClassGetRID
+pub type GDExtensionClassGetRID = FuncRef[(GDExtensionClassInstancePtr) -> UInt64]
 
 ///|
 ///
@@ -828,9 +828,9 @@ pub(all) struct GDExtensionMethodInfo {
 /// ```c
 /// typedef const GDExtensionPropertyInfo *(*GDExtensionClassGetPropertyList)(GDExtensionClassInstancePtr p_instance, uint32_t *r_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassGetPropertyList = FuncRef[
   (GDExtensionClassInstancePtr, Ref[UInt]) -> GDExtensionPropertyInfoCRef,
-] as GDExtensionClassGetPropertyList
+]
 
 ///|
 ///
@@ -839,9 +839,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionClassFreePropertyList)(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassFreePropertyList = FuncRef[
   (GDExtensionClassInstancePtr, GDExtensionPropertyInfo) -> Unit,
-] as GDExtensionClassFreePropertyList
+]
 
 ///|
 ///
@@ -850,9 +850,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionClassFreePropertyList2)(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list, uint32_t p_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassFreePropertyList2 = FuncRef[
   (GDExtensionClassInstancePtr, FixedArray[GDExtensionPropertyInfo], UInt) -> Unit,
-] as GDExtensionClassFreePropertyList2
+]
 
 ///|
 ///
@@ -861,9 +861,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionClassPropertyCanRevert)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassPropertyCanRevert = FuncRef[
   (GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr) -> GDExtensionBool,
-] as GDExtensionClassPropertyCanRevert
+]
 
 ///|
 ///
@@ -872,13 +872,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionClassPropertyGetRevert)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassPropertyGetRevert = FuncRef[
   (
     GDExtensionClassInstancePtr,
     GDExtensionConstStringNamePtr,
     GDExtensionVariantPtr,
   ) -> GDExtensionBool,
-] as GDExtensionClassPropertyGetRevert
+]
 
 ///|
 ///
@@ -887,9 +887,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionClassValidateProperty)(GDExtensionClassInstancePtr p_instance, GDExtensionPropertyInfo *p_property);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassValidateProperty = FuncRef[
   (GDExtensionClassInstancePtr, Ref[GDExtensionPropertyInfo]) -> GDExtensionBool,
-] as GDExtensionClassValidateProperty
+]
 
 ///|
 ///
@@ -898,7 +898,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionClassNotification)(GDExtensionClassInstancePtr p_instance, int32_t p_what); // Deprecated. Use GDExtensionClassNotification2 instead.
 /// ```
-pub typealias FuncRef[(GDExtensionClassInstancePtr, Int) -> Unit] as GDExtensionClassNotification
+pub type GDExtensionClassNotification = FuncRef[(GDExtensionClassInstancePtr, Int) -> Unit]
 
 ///|
 ///
@@ -907,9 +907,9 @@ pub typealias FuncRef[(GDExtensionClassInstancePtr, Int) -> Unit] as GDExtension
 /// ```c
 /// typedef void (*GDExtensionClassNotification2)(GDExtensionClassInstancePtr p_instance, int32_t p_what, GDExtensionBool p_reversed);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassNotification2 = FuncRef[
   (GDExtensionClassInstancePtr, Int, GDExtensionBool) -> Unit,
-] as GDExtensionClassNotification2
+]
 
 ///|
 ///
@@ -918,9 +918,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionClassToString)(GDExtensionClassInstancePtr p_instance, GDExtensionBool *r_is_valid, GDExtensionStringPtr p_out);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassToString = FuncRef[
   (GDExtensionClassInstancePtr, Ref[GDExtensionBool], GDExtensionStringPtr) -> Unit,
-] as GDExtensionClassToString
+]
 
 ///|
 ///
@@ -929,7 +929,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionClassReference)(GDExtensionClassInstancePtr p_instance);
 /// ```
-pub typealias FuncRef[(GDExtensionClassInstancePtr) -> Unit] as GDExtensionClassReference
+pub type GDExtensionClassReference = FuncRef[(GDExtensionClassInstancePtr) -> Unit]
 
 ///|
 ///
@@ -938,7 +938,7 @@ pub typealias FuncRef[(GDExtensionClassInstancePtr) -> Unit] as GDExtensionClass
 /// ```c
 /// typedef void (*GDExtensionClassUnreference)(GDExtensionClassInstancePtr p_instance);
 /// ```
-pub typealias FuncRef[(GDExtensionClassInstancePtr) -> Unit] as GDExtensionClassUnreference
+pub type GDExtensionClassUnreference = FuncRef[(GDExtensionClassInstancePtr) -> Unit]
 
 ///|
 ///
@@ -947,13 +947,13 @@ pub typealias FuncRef[(GDExtensionClassInstancePtr) -> Unit] as GDExtensionClass
 /// ```c
 /// typedef void (*GDExtensionClassCallVirtual)(GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassCallVirtual = FuncRef[
   (
     GDExtensionClassInstancePtr,
     Ref[GDExtensionConstTypePtr],
     GDExtensionTypePtr,
   ) -> Unit,
-] as GDExtensionClassCallVirtual
+]
 
 ///|
 ///
@@ -962,7 +962,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionClassCreateInstance)(void *p_class_userdata);
 /// ```
-pub typealias FuncRef[(VoidPtr) -> GDExtensionObjectPtr] as GDExtensionClassCreateInstance
+pub type GDExtensionClassCreateInstance = FuncRef[(VoidPtr) -> GDExtensionObjectPtr]
 
 ///|
 ///
@@ -971,7 +971,7 @@ pub typealias FuncRef[(VoidPtr) -> GDExtensionObjectPtr] as GDExtensionClassCrea
 /// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionClassCreateInstance2)(void *p_class_userdata, GDExtensionBool p_notify_postinitialize);
 /// ```
-pub typealias FuncRef[(VoidPtr, GDExtensionBool) -> GDExtensionObjectPtr] as GDExtensionClassCreateInstance2
+pub type GDExtensionClassCreateInstance2 = FuncRef[(VoidPtr, GDExtensionBool) -> GDExtensionObjectPtr]
 
 ///|
 ///
@@ -980,7 +980,7 @@ pub typealias FuncRef[(VoidPtr, GDExtensionBool) -> GDExtensionObjectPtr] as GDE
 /// ```c
 /// typedef void (*GDExtensionClassFreeInstance)(void *p_class_userdata, GDExtensionClassInstancePtr p_instance);
 /// ```
-pub typealias FuncRef[(VoidPtr, GDExtensionClassInstancePtr) -> Unit] as GDExtensionClassFreeInstance
+pub type GDExtensionClassFreeInstance = FuncRef[(VoidPtr, GDExtensionClassInstancePtr) -> Unit]
 
 ///|
 ///
@@ -989,9 +989,9 @@ pub typealias FuncRef[(VoidPtr, GDExtensionClassInstancePtr) -> Unit] as GDExten
 /// ```c
 /// typedef GDExtensionClassInstancePtr (*GDExtensionClassRecreateInstance)(void *p_class_userdata, GDExtensionObjectPtr p_object);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassRecreateInstance = FuncRef[
   (VoidPtr, GDExtensionObjectPtr) -> GDExtensionClassInstancePtr,
-] as GDExtensionClassRecreateInstance
+]
 
 ///|
 ///
@@ -1000,9 +1000,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionClassCallVirtual (*GDExtensionClassGetVirtual)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassGetVirtual = FuncRef[
   (VoidPtr, GDExtensionConstStringNamePtr) -> GDExtensionClassCallVirtual,
-] as GDExtensionClassGetVirtual
+]
 
 ///|
 ///
@@ -1011,9 +1011,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionClassCallVirtual (*GDExtensionClassGetVirtual2)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name, uint32_t p_hash);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassGetVirtual2 = FuncRef[
   (VoidPtr, GDExtensionConstStringNamePtr, UInt) -> GDExtensionClassCallVirtual,
-] as GDExtensionClassGetVirtual2
+]
 
 ///|
 ///
@@ -1022,7 +1022,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void *(*GDExtensionClassGetVirtualCallData)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name);
 /// ```
-pub typealias FuncRef[(VoidPtr, GDExtensionConstStringNamePtr) -> VoidPtr] as GDExtensionClassGetVirtualCallData
+pub type GDExtensionClassGetVirtualCallData = FuncRef[(VoidPtr, GDExtensionConstStringNamePtr) -> VoidPtr]
 
 ///|
 ///
@@ -1031,7 +1031,7 @@ pub typealias FuncRef[(VoidPtr, GDExtensionConstStringNamePtr) -> VoidPtr] as GD
 /// ```c
 /// typedef void *(*GDExtensionClassGetVirtualCallData2)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name, uint32_t p_hash);
 /// ```
-pub typealias FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt) -> VoidPtr] as GDExtensionClassGetVirtualCallData2
+pub type GDExtensionClassGetVirtualCallData2 = FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt) -> VoidPtr]
 
 ///|
 ///
@@ -1040,7 +1040,7 @@ pub typealias FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt) -> VoidPtr]
 /// ```c
 /// typedef void (*GDExtensionClassCallVirtualWithData)(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, void *p_virtual_call_userdata, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassCallVirtualWithData = FuncRef[
   (
     GDExtensionClassInstancePtr,
     GDExtensionConstStringNamePtr,
@@ -1048,7 +1048,7 @@ pub typealias FuncRef[
     GDExtensionConstTypePtr,
     GDExtensionTypePtr,
   ) -> Unit,
-] as GDExtensionClassCallVirtualWithData
+]
 
 ///|
 ///
@@ -1305,7 +1305,7 @@ pub type GDExtensionClassLibraryPtr
 /// ```c
 /// typedef void (*GDExtensionEditorGetClassesUsedCallback)(GDExtensionTypePtr p_packed_string_array);
 /// ```
-pub typealias FuncRef[(GDExtensionTypePtr) -> Unit] as GDExtensionEditorGetClassesUsedCallback
+pub type GDExtensionEditorGetClassesUsedCallback = FuncRef[(GDExtensionTypePtr) -> Unit]
 
 ///|
 ///
@@ -1376,7 +1376,7 @@ pub(all) enum GDExtensionClassMethodArgumentMetadata {
 /// ```c
 /// typedef void (*GDExtensionClassMethodCall)(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassMethodCall = FuncRef[
   (
     VoidPtr,
     GDExtensionClassInstancePtr,
@@ -1385,7 +1385,7 @@ pub typealias FuncRef[
     GDExtensionVariantPtr,
     GDExtensionCallError,
   ) -> Unit,
-] as GDExtensionClassMethodCall
+]
 
 ///|
 ///
@@ -1394,14 +1394,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionClassMethodValidatedCall)(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionVariantPtr r_return);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassMethodValidatedCall = FuncRef[
   (
     VoidPtr,
     GDExtensionClassInstancePtr,
     GDExtensionConstVariantPtr,
     GDExtensionVariantPtr,
   ) -> Unit,
-] as GDExtensionClassMethodValidatedCall
+]
 
 ///|
 ///
@@ -1410,14 +1410,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionClassMethodPtrCall)(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionClassMethodPtrCall = FuncRef[
   (
     VoidPtr,
     GDExtensionClassInstancePtr,
     GDExtensionConstTypePtr,
     GDExtensionTypePtr,
   ) -> Unit,
-] as GDExtensionClassMethodPtrCall
+]
 
 ///|
 ///
@@ -1503,7 +1503,7 @@ pub(all) struct GDExtensionClassVirtualMethodInfo {
 /// ```c
 /// typedef void (*GDExtensionCallableCustomCall)(void *callable_userdata, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionCallableCustomCall = FuncRef[
   (
     VoidPtr,
     GDExtensionConstVariantPtr,
@@ -1511,7 +1511,7 @@ pub typealias FuncRef[
     GDExtensionVariantPtr,
     GDExtensionCallError,
   ) -> Unit,
-] as GDExtensionCallableCustomCall
+]
 
 ///|
 ///
@@ -1520,7 +1520,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionCallableCustomIsValid)(void *callable_userdata);
 /// ```
-pub typealias FuncRef[(VoidPtr) -> GDExtensionBool] as GDExtensionCallableCustomIsValid
+pub type GDExtensionCallableCustomIsValid = FuncRef[(VoidPtr) -> GDExtensionBool]
 
 ///|
 ///
@@ -1529,7 +1529,7 @@ pub typealias FuncRef[(VoidPtr) -> GDExtensionBool] as GDExtensionCallableCustom
 /// ```c
 /// typedef void (*GDExtensionCallableCustomFree)(void *callable_userdata);
 /// ```
-pub typealias FuncRef[(VoidPtr) -> Unit] as GDExtensionCallableCustomFree
+pub type GDExtensionCallableCustomFree = FuncRef[(VoidPtr) -> Unit]
 
 ///|
 ///
@@ -1538,7 +1538,7 @@ pub typealias FuncRef[(VoidPtr) -> Unit] as GDExtensionCallableCustomFree
 /// ```c
 /// typedef uint32_t (*GDExtensionCallableCustomHash)(void *callable_userdata);
 /// ```
-pub typealias FuncRef[(VoidPtr) -> UInt] as GDExtensionCallableCustomHash
+pub type GDExtensionCallableCustomHash = FuncRef[(VoidPtr) -> UInt]
 
 ///|
 ///
@@ -1547,7 +1547,7 @@ pub typealias FuncRef[(VoidPtr) -> UInt] as GDExtensionCallableCustomHash
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionCallableCustomEqual)(void *callable_userdata_a, void *callable_userdata_b);
 /// ```
-pub typealias FuncRef[(VoidPtr, VoidPtr) -> GDExtensionBool] as GDExtensionCallableCustomEqual
+pub type GDExtensionCallableCustomEqual = FuncRef[(VoidPtr, VoidPtr) -> GDExtensionBool]
 
 ///|
 ///
@@ -1556,7 +1556,7 @@ pub typealias FuncRef[(VoidPtr, VoidPtr) -> GDExtensionBool] as GDExtensionCalla
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionCallableCustomLessThan)(void *callable_userdata_a, void *callable_userdata_b);
 /// ```
-pub typealias FuncRef[(VoidPtr, VoidPtr) -> GDExtensionBool] as GDExtensionCallableCustomLessThan
+pub type GDExtensionCallableCustomLessThan = FuncRef[(VoidPtr, VoidPtr) -> GDExtensionBool]
 
 ///|
 ///
@@ -1565,7 +1565,7 @@ pub typealias FuncRef[(VoidPtr, VoidPtr) -> GDExtensionBool] as GDExtensionCalla
 /// ```c
 /// typedef void (*GDExtensionCallableCustomToString)(void *callable_userdata, GDExtensionBool *r_is_valid, GDExtensionStringPtr r_out);
 /// ```
-pub typealias FuncRef[(VoidPtr, GDExtensionBool, GDExtensionStringPtr) -> Unit] as GDExtensionCallableCustomToString
+pub type GDExtensionCallableCustomToString = FuncRef[(VoidPtr, GDExtensionBool, GDExtensionStringPtr) -> Unit]
 
 ///|
 ///
@@ -1574,7 +1574,7 @@ pub typealias FuncRef[(VoidPtr, GDExtensionBool, GDExtensionStringPtr) -> Unit] 
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionCallableCustomGetArgumentCount)(void *callable_userdata, GDExtensionBool *r_is_valid);
 /// ```
-pub typealias FuncRef[(VoidPtr, GDExtensionBool) -> GDExtensionInt] as GDExtensionCallableCustomGetArgumentCount
+pub type GDExtensionCallableCustomGetArgumentCount = FuncRef[(VoidPtr, GDExtensionBool) -> GDExtensionInt]
 
 ///| 
 ///
@@ -1694,13 +1694,13 @@ pub type GDExtensionScriptInstanceDataPtr
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceSet)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceSet = FuncRef[
   (
     GDExtensionScriptInstanceDataPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionConstVariantPtr,
   ) -> GDExtensionBool,
-] as GDExtensionScriptInstanceSet
+]
 
 ///|
 ///
@@ -1709,13 +1709,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceGet)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceGet = FuncRef[
   (
     GDExtensionScriptInstanceDataPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionVariantPtr,
   ) -> GDExtensionBool,
-] as GDExtensionScriptInstanceGet
+]
 
 ///|
 ///
@@ -1724,9 +1724,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef const GDExtensionPropertyInfo *(*GDExtensionScriptInstanceGetPropertyList)(GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceGetPropertyList = FuncRef[
   (GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionPropertyInfo,
-] as GDExtensionScriptInstanceGetPropertyList
+]
 
 ///|
 ///
@@ -1735,9 +1735,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionScriptInstanceFreePropertyList)(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionPropertyInfo *p_list); // Deprecated. Use GDExtensionScriptInstanceFreePropertyList2 instead.
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceFreePropertyList = FuncRef[
   (GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> Unit,
-] as GDExtensionScriptInstanceFreePropertyList
+]
 
 ///|
 ///
@@ -1746,9 +1746,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionScriptInstanceFreePropertyList2)(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionPropertyInfo *p_list, uint32_t p_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceFreePropertyList2 = FuncRef[
   (GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo, UInt) -> Unit,
-] as GDExtensionScriptInstanceFreePropertyList2
+]
 
 ///|
 ///
@@ -1757,9 +1757,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceGetClassCategory)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionPropertyInfo *p_class_category);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceGetClassCategory = FuncRef[
   (GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> GDExtensionBool,
-] as GDExtensionScriptInstanceGetClassCategory
+]
 
 ///|
 ///
@@ -1768,13 +1768,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionVariantType (*GDExtensionScriptInstanceGetPropertyType)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceGetPropertyType = FuncRef[
   (
     GDExtensionScriptInstanceDataPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionBool,
   ) -> GDExtensionVariantType,
-] as GDExtensionScriptInstanceGetPropertyType
+]
 
 ///|
 ///
@@ -1783,9 +1783,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceValidateProperty)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionPropertyInfo *p_property);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceValidateProperty = FuncRef[
   (GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> GDExtensionBool,
-] as GDExtensionScriptInstanceValidateProperty
+]
 
 ///|
 ///
@@ -1794,9 +1794,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstancePropertyCanRevert)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstancePropertyCanRevert = FuncRef[
   (GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr) -> GDExtensionBool,
-] as GDExtensionScriptInstancePropertyCanRevert
+]
 
 ///|
 ///
@@ -1805,13 +1805,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstancePropertyGetRevert)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstancePropertyGetRevert = FuncRef[
   (
     GDExtensionScriptInstanceDataPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionVariantPtr,
   ) -> GDExtensionBool,
-] as GDExtensionScriptInstancePropertyGetRevert
+]
 
 ///| 
 /// @capi:
@@ -1819,9 +1819,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionScriptInstanceGetOwner)(GDExtensionScriptInstanceDataPtr p_instance);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceGetOwner = FuncRef[
   (GDExtensionScriptInstanceDataPtr) -> GDExtensionObjectPtr,
-] as GDExtensionScriptInstanceGetOwner
+]
 
 ///|
 ///
@@ -1830,9 +1830,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionScriptInstancePropertyStateAdd)(GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value, void *p_userdata);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstancePropertyStateAdd = FuncRef[
   (GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr, VoidPtr) -> Unit,
-] as GDExtensionScriptInstancePropertyStateAdd
+]
 
 ///|
 ///
@@ -1841,13 +1841,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionScriptInstanceGetPropertyState)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionScriptInstancePropertyStateAdd p_add_func, void *p_userdata);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceGetPropertyState = FuncRef[
   (
     GDExtensionScriptInstanceDataPtr,
     GDExtensionScriptInstancePropertyStateAdd,
     VoidPtr,
   ) -> Unit,
-] as GDExtensionScriptInstanceGetPropertyState
+]
 
 ///|
 ///
@@ -1856,9 +1856,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef const GDExtensionMethodInfo *(*GDExtensionScriptInstanceGetMethodList)(GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceGetMethodList = FuncRef[
   (GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionMethodInfo,
-] as GDExtensionScriptInstanceGetMethodList
+]
 
 ///|
 ///
@@ -1867,9 +1867,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionScriptInstanceFreeMethodList)(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionMethodInfo *p_list); // Deprecated. Use GDExtensionScriptInstanceFreeMethodList2 instead.
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceFreeMethodList = FuncRef[
   (GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo) -> Unit,
-] as GDExtensionScriptInstanceFreeMethodList
+]
 
 ///|
 ///
@@ -1878,9 +1878,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionScriptInstanceFreeMethodList2)(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionMethodInfo *p_list, uint32_t p_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceFreeMethodList2 = FuncRef[
   (GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo, UInt) -> Unit,
-] as GDExtensionScriptInstanceFreeMethodList2
+]
 
 ///|
 ///
@@ -1889,9 +1889,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceHasMethod)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceHasMethod = FuncRef[
   (GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr) -> GDExtensionBool,
-] as GDExtensionScriptInstanceHasMethod
+]
 
 ///|
 ///
@@ -1900,13 +1900,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionScriptInstanceGetMethodArgumentCount)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceGetMethodArgumentCount = FuncRef[
   (
     GDExtensionScriptInstanceDataPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionBool,
   ) -> GDExtensionInt,
-] as GDExtensionScriptInstanceGetMethodArgumentCount
+]
 
 ///|
 ///
@@ -1915,7 +1915,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionScriptInstanceCall)(GDExtensionScriptInstanceDataPtr p_self, GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceCall = FuncRef[
   (
     GDExtensionScriptInstanceDataPtr,
     GDExtensionConstStringNamePtr,
@@ -1924,7 +1924,7 @@ pub typealias FuncRef[
     GDExtensionVariantPtr,
     GDExtensionCallError,
   ) -> Unit,
-] as GDExtensionScriptInstanceCall
+]
 
 ///|
 ///
@@ -1933,7 +1933,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionScriptInstanceNotification)(GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what); // Deprecated. Use GDExtensionScriptInstanceNotification2 instead.
 /// ```
-pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, Int) -> Unit] as GDExtensionScriptInstanceNotification
+pub type GDExtensionScriptInstanceNotification = FuncRef[(GDExtensionScriptInstanceDataPtr, Int) -> Unit]
 
 ///|
 ///
@@ -1942,9 +1942,9 @@ pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr, Int) -> Unit] as GDExte
 /// ```c
 /// typedef void (*GDExtensionScriptInstanceNotification2)(GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what, GDExtensionBool p_reversed);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceNotification2 = FuncRef[
   (GDExtensionScriptInstanceDataPtr, Int, GDExtensionBool) -> Unit,
-] as GDExtensionScriptInstanceNotification2
+]
 
 ///|
 ///
@@ -1953,9 +1953,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionScriptInstanceToString)(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionBool *r_is_valid, GDExtensionStringPtr r_out);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceToString = FuncRef[
   (GDExtensionScriptInstanceDataPtr, GDExtensionBool, GDExtensionStringPtr) -> Unit,
-] as GDExtensionScriptInstanceToString
+]
 
 ///|
 ///
@@ -1964,7 +1964,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionScriptInstanceRefCountIncremented)(GDExtensionScriptInstanceDataPtr p_instance);
 /// ```
-pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> Unit] as GDExtensionScriptInstanceRefCountIncremented
+pub type GDExtensionScriptInstanceRefCountIncremented = FuncRef[(GDExtensionScriptInstanceDataPtr) -> Unit]
 
 ///|
 ///
@@ -1973,7 +1973,7 @@ pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> Unit] as GDExtension
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceRefCountDecremented)(GDExtensionScriptInstanceDataPtr p_instance);
 /// ```
-pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionBool] as GDExtensionScriptInstanceRefCountDecremented
+pub type GDExtensionScriptInstanceRefCountDecremented = FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionBool]
 
 ///|
 ///
@@ -1982,9 +1982,9 @@ pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionBool] as 
 /// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionScriptInstanceGetScript)(GDExtensionScriptInstanceDataPtr p_instance);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceGetScript = FuncRef[
   (GDExtensionScriptInstanceDataPtr) -> GDExtensionObjectPtr,
-] as GDExtensionScriptInstanceGetScript
+]
 
 ///|
 ///
@@ -1993,7 +1993,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionScriptInstanceIsPlaceholder)(GDExtensionScriptInstanceDataPtr p_instance);
 /// ```
-pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionBool] as GDExtensionScriptInstanceIsPlaceholder
+pub type GDExtensionScriptInstanceIsPlaceholder = FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionBool]
 
 ///|
 ///
@@ -2012,9 +2012,9 @@ pub type GDExtensionScriptLanguagePtr
 /// ```c
 /// typedef GDExtensionScriptLanguagePtr (*GDExtensionScriptInstanceGetLanguage)(GDExtensionScriptInstanceDataPtr p_instance);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionScriptInstanceGetLanguage = FuncRef[
   (GDExtensionScriptInstanceDataPtr) -> GDExtensionScriptLanguagePtr,
-] as GDExtensionScriptInstanceGetLanguage
+]
 
 ///|
 ///
@@ -2023,7 +2023,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionScriptInstanceFree)(GDExtensionScriptInstanceDataPtr p_instance);
 /// ```
-pub typealias FuncRef[(GDExtensionScriptInstanceDataPtr) -> Unit] as GDExtensionScriptInstanceFree
+pub type GDExtensionScriptInstanceFree = FuncRef[(GDExtensionScriptInstanceDataPtr) -> Unit]
 
 ///|
 ///
@@ -2307,7 +2307,7 @@ pub(all) struct GDExtensionInitialization {
 /// ```c
 /// typedef void (*GDExtensionInterfaceFunctionPtr)();
 /// ```
-pub typealias FuncRef[() -> Unit] as GDExtensionInterfaceFunctionPtr
+pub type GDExtensionInterfaceFunctionPtr = FuncRef[() -> Unit]
 
 ///|
 ///
@@ -2316,7 +2316,7 @@ pub typealias FuncRef[() -> Unit] as GDExtensionInterfaceFunctionPtr
 /// ```c
 /// typedef GDExtensionInterfaceFunctionPtr (*GDExtensionInterfaceGetProcAddress)(const char *p_function_name);
 /// ```
-pub typealias FuncRef[(Bytes) -> GDExtensionInterfaceFunctionPtr] as GDExtensionInterfaceGetProcAddress
+pub type GDExtensionInterfaceGetProcAddress = FuncRef[(Bytes) -> GDExtensionInterfaceFunctionPtr]
 ///
 
 ///|
@@ -2359,13 +2359,13 @@ pub typealias FuncRef[(Bytes) -> GDExtensionInterfaceFunctionPtr] as GDExtension
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInitializationFunction)(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInitializationFunction = FuncRef[
   (
     GDExtensionInterfaceGetProcAddress,
     GDExtensionClassLibraryPtr,
     GDExtensionInitialization,
   ) -> GDExtensionBool,
-] as GDExtensionInitializationFunction
+]
 
 ///|
 /// 
@@ -2400,7 +2400,7 @@ pub(all) struct GDExtensionGodotVersion {
 /// ```c
 /// typedef void (*GDExtensionInterfaceGetGodotVersion)(GDExtensionGodotVersion *r_godot_version);
 /// ```
-pub typealias FuncRef[(GDExtensionGodotVersion) -> Unit] as GDExtensionInterfaceGetGodotVersion
+pub type GDExtensionInterfaceGetGodotVersion = FuncRef[(GDExtensionGodotVersion) -> Unit]
 
 ///| 
 /// 
@@ -2416,7 +2416,7 @@ pub typealias FuncRef[(GDExtensionGodotVersion) -> Unit] as GDExtensionInterface
 /// ```
 /// typedef void *(*GDExtensionInterfaceMemAlloc)(size_t p_bytes);
 /// ```
-pub typealias FuncRef[(UInt) -> VoidPtr] as GDExtensionInterfaceMemAlloc
+pub type GDExtensionInterfaceMemAlloc = FuncRef[(UInt) -> VoidPtr]
 
 ///| 
 /// @name mem_realloc
@@ -2434,7 +2434,7 @@ pub typealias FuncRef[(UInt) -> VoidPtr] as GDExtensionInterfaceMemAlloc
 /// ```c
 /// typedef void *(*GDExtensionInterfaceMemRealloc)(void *p_ptr, size_t p_bytes);
 /// ```
-pub typealias FuncRef[(VoidPtr, UInt) -> VoidPtr] as GDExtensionInterfaceMemRealloc
+pub type GDExtensionInterfaceMemRealloc = FuncRef[(VoidPtr, UInt) -> VoidPtr]
 
 ///| 
 /// @name mem_free
@@ -2449,7 +2449,7 @@ pub typealias FuncRef[(VoidPtr, UInt) -> VoidPtr] as GDExtensionInterfaceMemReal
 /// ```c
 /// typedef void (*GDExtensionInterfaceMemFree)(void *p_ptr);
 /// ```
-pub typealias FuncRef[(VoidPtr) -> Unit] as GDExtensionInterfaceMemFree
+pub type GDExtensionInterfaceMemFree = FuncRef[(VoidPtr) -> Unit]
 
 ///| 
 /// @name print_error
@@ -2473,7 +2473,7 @@ pub typealias FuncRef[(VoidPtr) -> Unit] as GDExtensionInterfaceMemFree
 /// 	int32_t p_line,
 /// 	GDExtensionBool p_editor_notify);
 /// ```
-pub typealias FuncRef[(Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit] as GDExtensionInterfacePrintError
+pub type GDExtensionInterfacePrintError = FuncRef[(Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit]
 
 ///| 
 /// @name print_error_with_message
@@ -2499,9 +2499,9 @@ pub typealias FuncRef[(Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit] as GD
 ///   int32_t p_line,
 ///   GDExtensionBool p_editor_notify);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePrintErrorWithMessage = FuncRef[
   (Bytes, Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit,
-] as GDExtensionInterfacePrintErrorWithMessage
+]
 
 ///| 
 /// @name print_warning
@@ -2525,7 +2525,7 @@ pub typealias FuncRef[
 ///   int32_t p_line,
 ///   GDExtensionBool p_editor_notify);
 /// ```
-pub typealias FuncRef[(Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit] as GDExtensionInterfacePrintWarning
+pub type GDExtensionInterfacePrintWarning = FuncRef[(Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit]
 
 ///| 
 /// @name print_warning_with_message
@@ -2551,9 +2551,9 @@ pub typealias FuncRef[(Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit] as GD
 ///   int32_t p_line,
 ///   GDExtensionBool p_editor_notify);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePrintWarningWithMessage = FuncRef[
   (Bytes, Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit,
-] as GDExtensionInterfacePrintWarningWithMessage
+]
 
 ///| 
 /// 
@@ -2578,9 +2578,9 @@ pub typealias FuncRef[
 /// 	int32_t p_line,
 /// 	GDExtensionBool p_editor_notify);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePrintScriptError = FuncRef[
   (Bytes, Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit,
-] as GDExtensionInterfacePrintScriptError
+]
 
 ///| 
 /// @name print_script_error_with_message
@@ -2606,9 +2606,9 @@ pub typealias FuncRef[
 ///   int32_t p_line,
 ///   GDExtensionBool p_editor_notify);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePrintScriptErrorWithMessage = FuncRef[
   (Bytes, Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit,
-] as GDExtensionInterfacePrintScriptErrorWithMessage
+]
 
 ///| 
 /// @name get_native_struct_size
@@ -2625,7 +2625,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef uint64_t (*GDExtensionInterfaceGetNativeStructSize)(GDExtensionConstStringNamePtr p_name);
 /// ```
-pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> UInt64] as GDExtensionInterfaceGetNativeStructSize
+pub type GDExtensionInterfaceGetNativeStructSize = FuncRef[(GDExtensionConstStringNamePtr) -> UInt64]
 
 ///| 
 /// 
@@ -2642,9 +2642,9 @@ pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> UInt64] as GDExtensionI
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantNewCopy)(GDExtensionUninitializedVariantPtr r_dest, GDExtensionConstVariantPtr p_src);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantNewCopy = FuncRef[
   (GDExtensionUninitializedVariantPtr, GDExtensionConstVariantPtr) -> Unit,
-] as GDExtensionInterfaceVariantNewCopy
+]
 
 ///| 
 /// @name variant_new_nil
@@ -2659,7 +2659,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantNewNil)(GDExtensionUninitializedVariantPtr r_dest);
 /// ```
-pub typealias FuncRef[(GDExtensionUninitializedVariantPtr) -> Unit] as GDExtensionInterfaceVariantNewNil
+pub type GDExtensionInterfaceVariantNewNil = FuncRef[(GDExtensionUninitializedVariantPtr) -> Unit]
 
 ///|
 ///
@@ -2675,7 +2675,7 @@ pub typealias FuncRef[(GDExtensionUninitializedVariantPtr) -> Unit] as GDExtensi
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantDestroy)(GDExtensionVariantPtr p_self);
 /// ```
-pub typealias FuncRef[(GDExtensionVariantPtr) -> Unit] as GDExtensionInterfaceVariantDestroy
+pub type GDExtensionInterfaceVariantDestroy = FuncRef[(GDExtensionVariantPtr) -> Unit]
 
 ///|
 /// @name variant_call
@@ -2703,7 +2703,7 @@ pub typealias FuncRef[(GDExtensionVariantPtr) -> Unit] as GDExtensionInterfaceVa
 ///   GDExtensionUninitializedVariantPtr r_return,
 ///   GDExtensionCallError *r_error);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantCall = FuncRef[
   (
     GDExtensionVariantPtr,
     GDExtensionConstStringNamePtr,
@@ -2712,7 +2712,7 @@ pub typealias FuncRef[
     GDExtensionUninitializedVariantPtr,
     GDExtensionCallError,
   ) -> Unit,
-] as GDExtensionInterfaceVariantCall
+]
 
 ///| 
 /// @name variant_call_static
@@ -2740,7 +2740,7 @@ pub typealias FuncRef[
 ///   GDExtensionUninitializedVariantPtr r_return,
 ///   GDExtensionCallError *r_error);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantCallStatic = FuncRef[
   (
     GDExtensionVariantType,
     GDExtensionConstStringNamePtr,
@@ -2749,7 +2749,7 @@ pub typealias FuncRef[
     GDExtensionUninitializedVariantPtr,
     GDExtensionCallError,
   ) -> Unit,
-] as GDExtensionInterfaceVariantCallStatic
+]
 
 ///| 
 /// @name variant_evaluate
@@ -2775,7 +2775,7 @@ pub typealias FuncRef[
 ///   GDExtensionUninitializedVariantPtr r_return,
 ///   GDExtensionBool *r_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantEvaluate = FuncRef[
   (
     GDExtensionVariantOperator,
     GDExtensionConstVariantPtr,
@@ -2783,7 +2783,7 @@ pub typealias FuncRef[
     GDExtensionUninitializedVariantPtr,
     GDExtensionBool,
   ) -> Unit,
-] as GDExtensionInterfaceVariantEvaluate
+]
 
 ///| 
 /// @name variant_set
@@ -2803,14 +2803,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantSet)(GDExtensionVariantPtr p_self, GDExtensionConstVariantPtr p_key, GDExtensionConstVariantPtr p_value, GDExtensionBool *r_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantSet = FuncRef[
   (
     GDExtensionVariantPtr,
     GDExtensionConstVariantPtr,
     GDExtensionConstVariantPtr,
     GDExtensionBool,
   ) -> Unit,
-] as GDExtensionInterfaceVariantSet
+]
 
 ///| 
 /// @name variant_set_named
@@ -2830,14 +2830,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantSetNamed)(GDExtensionVariantPtr p_self, GDExtensionConstStringNamePtr p_key, GDExtensionConstVariantPtr p_value, GDExtensionBool *r_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantSetNamed = FuncRef[
   (
     GDExtensionVariantPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionConstVariantPtr,
     GDExtensionBool,
   ) -> Unit,
-] as GDExtensionInterfaceVariantSetNamed
+]
 
 ///| 
 /// @name variant_set_keyed
@@ -2857,14 +2857,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantSetKeyed)(GDExtensionVariantPtr p_self, GDExtensionConstVariantPtr p_key, GDExtensionConstVariantPtr p_value, GDExtensionBool *r_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantSetKeyed = FuncRef[
   (
     GDExtensionVariantPtr,
     GDExtensionConstVariantPtr,
     GDExtensionConstVariantPtr,
     GDExtensionBool,
   ) -> Unit,
-] as GDExtensionInterfaceVariantSetKeyed
+]
 
 ///|
 /// 
@@ -2884,7 +2884,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantSetIndexed)(GDExtensionVariantPtr p_self, GDExtensionInt p_index, GDExtensionConstVariantPtr p_value, GDExtensionBool *r_valid, GDExtensionBool *r_oob);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantSetIndexed = FuncRef[
   (
     GDExtensionVariantPtr,
     GDExtensionInt,
@@ -2892,7 +2892,7 @@ pub typealias FuncRef[
     GDExtensionBool,
     GDExtensionBool,
   ) -> Unit,
-] as GDExtensionInterfaceVariantSetIndexed
+]
 
 ///| 
 /// @name variant_get
@@ -2910,14 +2910,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantGet)(GDExtensionConstVariantPtr p_self, GDExtensionConstVariantPtr p_key, GDExtensionUninitializedVariantPtr r_ret, GDExtensionBool *r_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGet = FuncRef[
   (
     GDExtensionConstVariantPtr,
     GDExtensionConstVariantPtr,
     GDExtensionUninitializedVariantPtr,
     GDExtensionBool,
   ) -> Unit,
-] as GDExtensionInterfaceVariantGet
+]
 
 ///| 
 /// @name variant_get_named
@@ -2935,14 +2935,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantGetNamed)(GDExtensionConstVariantPtr p_self, GDExtensionConstStringNamePtr p_key, GDExtensionUninitializedVariantPtr r_ret, GDExtensionBool *r_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGetNamed = FuncRef[
   (
     GDExtensionConstVariantPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionUninitializedVariantPtr,
     GDExtensionBool,
   ) -> Unit,
-] as GDExtensionInterfaceVariantGetNamed
+]
 
 ///|
 ///
@@ -2961,14 +2961,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantGetKeyed)(GDExtensionConstVariantPtr p_self, GDExtensionConstVariantPtr p_key, GDExtensionUninitializedVariantPtr r_ret, GDExtensionBool *r_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGetKeyed = FuncRef[
   (
     GDExtensionConstVariantPtr,
     GDExtensionConstVariantPtr,
     GDExtensionUninitializedVariantPtr,
     GDExtensionBool,
   ) -> Unit,
-] as GDExtensionInterfaceVariantGetKeyed
+]
 
 ///|
 ///
@@ -2988,7 +2988,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantGetIndexed)(GDExtensionConstVariantPtr p_self, GDExtensionInt p_index, GDExtensionUninitializedVariantPtr r_ret, GDExtensionBool *r_valid, GDExtensionBool *r_oob);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGetIndexed = FuncRef[
   (
     GDExtensionConstVariantPtr,
     GDExtensionInt,
@@ -2996,7 +2996,7 @@ pub typealias FuncRef[
     GDExtensionBool,
     GDExtensionBool,
   ) -> Unit,
-] as GDExtensionInterfaceVariantGetIndexed
+]
 
 ///| 
 /// @name variant_iter_init
@@ -3017,13 +3017,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInterfaceVariantIterInit)(GDExtensionConstVariantPtr p_self, GDExtensionUninitializedVariantPtr r_iter, GDExtensionBool *r_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantIterInit = FuncRef[
   (
     GDExtensionConstVariantPtr,
     GDExtensionUninitializedVariantPtr,
     GDExtensionBool,
   ) -> GDExtensionBool,
-] as GDExtensionInterfaceVariantIterInit
+]
 
 ///|
 ///
@@ -3045,9 +3045,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInterfaceVariantIterNext)(GDExtensionConstVariantPtr p_self, GDExtensionVariantPtr r_iter, GDExtensionBool *r_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantIterNext = FuncRef[
   (GDExtensionConstVariantPtr, GDExtensionVariantPtr, GDExtensionBool) -> GDExtensionBool,
-] as GDExtensionInterfaceVariantIterNext
+]
 
 ///| 
 /// @name variant_iter_get
@@ -3067,14 +3067,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantIterGet)(GDExtensionConstVariantPtr p_self, GDExtensionVariantPtr r_iter, GDExtensionUninitializedVariantPtr r_ret, GDExtensionBool *r_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantIterGet = FuncRef[
   (
     GDExtensionConstVariantPtr,
     GDExtensionVariantPtr,
     GDExtensionUninitializedVariantPtr,
     GDExtensionBool,
   ) -> Unit,
-] as GDExtensionInterfaceVariantIterGet
+]
 
 ///|
 ///
@@ -3094,7 +3094,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionInterfaceVariantHash)(GDExtensionConstVariantPtr p_self);
 /// ```
-pub typealias FuncRef[(GDExtensionConstVariantPtr) -> GDExtensionInt] as GDExtensionInterfaceVariantHash
+pub type GDExtensionInterfaceVariantHash = FuncRef[(GDExtensionConstVariantPtr) -> GDExtensionInt]
 
 ///|
 ///
@@ -3115,9 +3115,9 @@ pub typealias FuncRef[(GDExtensionConstVariantPtr) -> GDExtensionInt] as GDExten
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionInterfaceVariantRecursiveHash)(GDExtensionConstVariantPtr p_self, GDExtensionInt p_recursion_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantRecursiveHash = FuncRef[
   (GDExtensionConstVariantPtr, GDExtensionInt) -> GDExtensionInt,
-] as GDExtensionInterfaceVariantRecursiveHash
+]
 
 ///| 
 /// @name variant_hash_compare
@@ -3137,9 +3137,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInterfaceVariantHashCompare)(GDExtensionConstVariantPtr p_self, GDExtensionConstVariantPtr p_other);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantHashCompare = FuncRef[
   (GDExtensionConstVariantPtr, GDExtensionConstVariantPtr) -> GDExtensionBool,
-] as GDExtensionInterfaceVariantHashCompare
+]
 
 ///| 
 /// @name variant_booleanize
@@ -3156,7 +3156,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInterfaceVariantBooleanize)(GDExtensionConstVariantPtr p_self);
 /// ```
-pub typealias FuncRef[(GDExtensionConstVariantPtr) -> GDExtensionBool] as GDExtensionInterfaceVariantBooleanize
+pub type GDExtensionInterfaceVariantBooleanize = FuncRef[(GDExtensionConstVariantPtr) -> GDExtensionBool]
 
 ///| 
 /// @name variant_duplicate
@@ -3173,9 +3173,9 @@ pub typealias FuncRef[(GDExtensionConstVariantPtr) -> GDExtensionBool] as GDExte
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantDuplicate)(GDExtensionConstVariantPtr p_self, GDExtensionVariantPtr r_ret, GDExtensionBool p_deep);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantDuplicate = FuncRef[
   (GDExtensionConstVariantPtr, GDExtensionVariantPtr, GDExtensionBool) -> Unit,
-] as GDExtensionInterfaceVariantDuplicate
+]
 
 ///| 
 /// 
@@ -3192,9 +3192,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantStringify)(GDExtensionConstVariantPtr p_self, GDExtensionStringPtr r_ret);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantStringify = FuncRef[
   (GDExtensionConstVariantPtr, GDExtensionStringPtr) -> Unit,
-] as GDExtensionInterfaceVariantStringify
+]
 
 ///| 
 /// @name variant_get_type
@@ -3211,7 +3211,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionVariantType (*GDExtensionInterfaceVariantGetType)(GDExtensionConstVariantPtr p_self);
 /// ```
-pub typealias FuncRef[(GDExtensionConstVariantPtr) -> GDExtensionVariantType] as GDExtensionInterfaceVariantGetType
+pub type GDExtensionInterfaceVariantGetType = FuncRef[(GDExtensionConstVariantPtr) -> GDExtensionVariantType]
 
 ///| 
 /// @name variant_has_method
@@ -3229,9 +3229,9 @@ pub typealias FuncRef[(GDExtensionConstVariantPtr) -> GDExtensionVariantType] as
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInterfaceVariantHasMethod)(GDExtensionConstVariantPtr p_self, GDExtensionConstStringNamePtr p_method);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantHasMethod = FuncRef[
   (GDExtensionConstVariantPtr, GDExtensionConstStringNamePtr) -> GDExtensionBool,
-] as GDExtensionInterfaceVariantHasMethod
+]
 
 ///| 
 /// @name variant_has_member
@@ -3249,9 +3249,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInterfaceVariantHasMember)(GDExtensionVariantType p_type, GDExtensionConstStringNamePtr p_member);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantHasMember = FuncRef[
   (GDExtensionVariantType, GDExtensionConstStringNamePtr) -> GDExtensionBool,
-] as GDExtensionInterfaceVariantHasMember
+]
 
 ///| 
 /// @name variant_has_key
@@ -3270,9 +3270,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInterfaceVariantHasKey)(GDExtensionConstVariantPtr p_self, GDExtensionConstVariantPtr p_key, GDExtensionBool *r_valid);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantHasKey = FuncRef[
   (GDExtensionConstVariantPtr, GDExtensionConstVariantPtr, GDExtensionBool) -> GDExtensionBool,
-] as GDExtensionInterfaceVariantHasKey
+]
 
 ///|
 /// @name variant_get_object_instance_id
@@ -3292,7 +3292,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDObjectInstanceID (*GDExtensionInterfaceVariantGetObjectInstanceId)(GDExtensionConstVariantPtr p_self);
 /// ```
-pub typealias FuncRef[(GDExtensionConstVariantPtr) -> GDObjectInstanceID] as GDExtensionInterfaceVariantGetObjectInstanceId
+pub type GDExtensionInterfaceVariantGetObjectInstanceId = FuncRef[(GDExtensionConstVariantPtr) -> GDObjectInstanceID]
 
 ///|
 /// @name variant_get_type_name
@@ -3308,9 +3308,9 @@ pub typealias FuncRef[(GDExtensionConstVariantPtr) -> GDObjectInstanceID] as GDE
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantGetTypeName)(GDExtensionVariantType p_type, GDExtensionUninitializedStringPtr r_name);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGetTypeName = FuncRef[
   (GDExtensionVariantType, GDExtensionUninitializedStringPtr) -> Unit,
-] as GDExtensionInterfaceVariantGetTypeName
+]
 
 ///| 
 /// @name variant_can_convert
@@ -3328,9 +3328,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInterfaceVariantCanConvert)(GDExtensionVariantType p_from, GDExtensionVariantType p_to);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantCanConvert = FuncRef[
   (GDExtensionVariantType, GDExtensionVariantType) -> GDExtensionBool,
-] as GDExtensionInterfaceVariantCanConvert
+]
 
 ///| 
 /// @name variant_can_convert_strict
@@ -3348,9 +3348,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInterfaceVariantCanConvertStrict)(GDExtensionVariantType p_from, GDExtensionVariantType p_to);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantCanConvertStrict = FuncRef[
   (GDExtensionVariantType, GDExtensionVariantType) -> GDExtensionBool,
-] as GDExtensionInterfaceVariantCanConvertStrict
+]
 
 ///| 
 /// @name get_variant_from_type_constructor
@@ -3367,9 +3367,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionVariantFromTypeConstructorFunc (*GDExtensionInterfaceGetVariantFromTypeConstructor)(GDExtensionVariantType p_type);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceGetVariantFromTypeConstructor = FuncRef[
   (GDExtensionVariantType) -> GDExtensionVariantFromTypeConstructorFunc,
-] as GDExtensionInterfaceGetVariantFromTypeConstructor
+]
 
 ///| 
 /// @name get_variant_to_type_constructor
@@ -3386,9 +3386,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionTypeFromVariantConstructorFunc (*GDExtensionInterfaceGetVariantToTypeConstructor)(GDExtensionVariantType p_type);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceGetVariantToTypeConstructor = FuncRef[
   (GDExtensionVariantType) -> GDExtensionTypeFromVariantConstructorFunc,
-] as GDExtensionInterfaceGetVariantToTypeConstructor
+]
 
 ///| 
 /// @name variant_get_ptr_internal_getter
@@ -3410,9 +3410,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionVariantGetInternalPtrFunc (*GDExtensionInterfaceGetVariantGetInternalPtrFunc)(GDExtensionVariantType p_type);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceGetVariantGetInternalPtrFunc = FuncRef[
   (GDExtensionVariantType) -> GDExtensionVariantGetInternalPtrFunc,
-] as GDExtensionInterfaceGetVariantGetInternalPtrFunc
+]
 
 ///| 
 /// @name variant_get_ptr_operator_evaluator
@@ -3431,9 +3431,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionPtrOperatorEvaluator (*GDExtensionInterfaceVariantGetPtrOperatorEvaluator)(GDExtensionVariantOperator p_operator, GDExtensionVariantType p_type_a, GDExtensionVariantType p_type_b);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGetPtrOperatorEvaluator = FuncRef[
   (GDExtensionVariantOperator, GDExtensionVariantType, GDExtensionVariantType) -> GDExtensionPtrOperatorEvaluator,
-] as GDExtensionInterfaceVariantGetPtrOperatorEvaluator
+]
 
 ///| 
 /// @name variant_get_ptr_builtin_method
@@ -3452,9 +3452,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionPtrBuiltInMethod (*GDExtensionInterfaceVariantGetPtrBuiltinMethod)(GDExtensionVariantType p_type, GDExtensionConstStringNamePtr p_method, GDExtensionInt p_hash);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGetPtrBuiltinMethod = FuncRef[
   (GDExtensionVariantType, GDExtensionConstStringNamePtr, GDExtensionInt) -> GDExtensionPtrBuiltInMethod,
-] as GDExtensionInterfaceVariantGetPtrBuiltinMethod
+]
 
 ///| 
 /// @name variant_get_ptr_constructor
@@ -3472,9 +3472,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionPtrConstructor (*GDExtensionInterfaceVariantGetPtrConstructor)(GDExtensionVariantType p_type, int32_t p_constructor);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGetPtrConstructor = FuncRef[
   (GDExtensionVariantType, Int) -> GDExtensionPtrConstructor,
-] as GDExtensionInterfaceVariantGetPtrConstructor
+]
 
 ///| 
 /// @name variant_get_ptr_destructor
@@ -3491,7 +3491,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionPtrDestructor (*GDExtensionInterfaceVariantGetPtrDestructor)(GDExtensionVariantType p_type);
 /// ```
-pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrDestructor] as GDExtensionInterfaceVariantGetPtrDestructor
+pub type GDExtensionInterfaceVariantGetPtrDestructor = FuncRef[(GDExtensionVariantType) -> GDExtensionPtrDestructor]
 
 ///| 
 /// @name variant_construct
@@ -3510,7 +3510,7 @@ pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrDestructor] as G
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantConstruct)(GDExtensionVariantType p_type, GDExtensionUninitializedVariantPtr r_base, const GDExtensionConstVariantPtr *p_args, int32_t p_argument_count, GDExtensionCallError *r_error);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantConstruct = FuncRef[
   (
     GDExtensionVariantType,
     GDExtensionUninitializedVariantPtr,
@@ -3518,7 +3518,7 @@ pub typealias FuncRef[
     Int,
     GDExtensionCallError,
   ) -> Unit,
-] as GDExtensionInterfaceVariantConstruct
+]
 
 ///| 
 /// @name variant_get_ptr_setter
@@ -3536,9 +3536,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionPtrSetter (*GDExtensionInterfaceVariantGetPtrSetter)(GDExtensionVariantType p_type, GDExtensionConstStringNamePtr p_member);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGetPtrSetter = FuncRef[
   (GDExtensionVariantType, GDExtensionConstStringNamePtr) -> GDExtensionPtrSetter,
-] as GDExtensionInterfaceVariantGetPtrSetter
+]
 
 ///| 
 /// @name variant_get_ptr_getter
@@ -3556,9 +3556,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionPtrGetter (*GDExtensionInterfaceVariantGetPtrGetter)(GDExtensionVariantType p_type, GDExtensionConstStringNamePtr p_member);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGetPtrGetter = FuncRef[
   (GDExtensionVariantType, GDExtensionConstStringNamePtr) -> GDExtensionPtrGetter,
-] as GDExtensionInterfaceVariantGetPtrGetter
+]
 
 ///| 
 /// @name variant_get_ptr_indexed_setter
@@ -3575,7 +3575,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionPtrIndexedSetter (*GDExtensionInterfaceVariantGetPtrIndexedSetter)(GDExtensionVariantType p_type);
 /// ```
-pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrIndexedSetter] as GDExtensionInterfaceVariantGetPtrIndexedSetter
+pub type GDExtensionInterfaceVariantGetPtrIndexedSetter = FuncRef[(GDExtensionVariantType) -> GDExtensionPtrIndexedSetter]
 
 ///| 
 /// @name variant_get_ptr_indexed_getter
@@ -3592,7 +3592,7 @@ pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrIndexedSetter] a
 /// ```c
 /// typedef GDExtensionPtrIndexedGetter (*GDExtensionInterfaceVariantGetPtrIndexedGetter)(GDExtensionVariantType p_type);
 /// ```
-pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrIndexedGetter] as GDExtensionInterfaceVariantGetPtrIndexedGetter
+pub type GDExtensionInterfaceVariantGetPtrIndexedGetter = FuncRef[(GDExtensionVariantType) -> GDExtensionPtrIndexedGetter]
 
 ///| 
 /// @name variant_get_ptr_keyed_setter
@@ -3609,7 +3609,7 @@ pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrIndexedGetter] a
 /// ```c
 /// typedef GDExtensionPtrKeyedSetter (*GDExtensionInterfaceVariantGetPtrKeyedSetter)(GDExtensionVariantType p_type);
 /// ```
-pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrKeyedSetter] as GDExtensionInterfaceVariantGetPtrKeyedSetter
+pub type GDExtensionInterfaceVariantGetPtrKeyedSetter = FuncRef[(GDExtensionVariantType) -> GDExtensionPtrKeyedSetter]
 
 ///| 
 /// @name variant_get_ptr_keyed_getter
@@ -3626,7 +3626,7 @@ pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrKeyedSetter] as 
 /// ```c
 /// typedef GDExtensionPtrKeyedGetter (*GDExtensionInterfaceVariantGetPtrKeyedGetter)(GDExtensionVariantType p_type);
 /// ```
-pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrKeyedGetter] as GDExtensionInterfaceVariantGetPtrKeyedGetter
+pub type GDExtensionInterfaceVariantGetPtrKeyedGetter = FuncRef[(GDExtensionVariantType) -> GDExtensionPtrKeyedGetter]
 
 ///| 
 /// @name variant_get_ptr_keyed_checker
@@ -3643,7 +3643,7 @@ pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrKeyedGetter] as 
 /// ```c
 /// typedef GDExtensionPtrKeyedChecker (*GDExtensionInterfaceVariantGetPtrKeyedChecker)(GDExtensionVariantType p_type);
 /// ```
-pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrKeyedChecker] as GDExtensionInterfaceVariantGetPtrKeyedChecker
+pub type GDExtensionInterfaceVariantGetPtrKeyedChecker = FuncRef[(GDExtensionVariantType) -> GDExtensionPtrKeyedChecker]
 
 ///| 
 /// @name variant_get_constant_value
@@ -3660,13 +3660,13 @@ pub typealias FuncRef[(GDExtensionVariantType) -> GDExtensionPtrKeyedChecker] as
 /// ```c
 /// typedef void (*GDExtensionInterfaceVariantGetConstantValue)(GDExtensionVariantType p_type, GDExtensionConstStringNamePtr p_constant, GDExtensionUninitializedVariantPtr r_ret);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGetConstantValue = FuncRef[
   (
     GDExtensionVariantType,
     GDExtensionConstStringNamePtr,
     GDExtensionUninitializedVariantPtr,
   ) -> Unit,
-] as GDExtensionInterfaceVariantGetConstantValue
+]
 
 ///| 
 /// @name variant_get_ptr_utility_function
@@ -3684,9 +3684,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionPtrUtilityFunction (*GDExtensionInterfaceVariantGetPtrUtilityFunction)(GDExtensionConstStringNamePtr p_function, GDExtensionInt p_hash);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceVariantGetPtrUtilityFunction = FuncRef[
   (GDExtensionConstStringNamePtr, GDExtensionInt) -> GDExtensionPtrUtilityFunction,
-] as GDExtensionInterfaceVariantGetPtrUtilityFunction
+]
 
 ///|
 /// 
@@ -3704,7 +3704,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNewWithLatin1Chars)(GDExtensionUninitializedStringPtr r_dest, const char *p_contents);
 /// ```
-pub typealias FuncRef[(GDExtensionUninitializedStringPtr, Bytes) -> Unit] as GDExtensionInterfaceStringNewWithLatin1Chars
+pub type GDExtensionInterfaceStringNewWithLatin1Chars = FuncRef[(GDExtensionUninitializedStringPtr, Bytes) -> Unit]
 
 ///| 
 /// @name string_new_with_utf8_chars
@@ -3720,7 +3720,7 @@ pub typealias FuncRef[(GDExtensionUninitializedStringPtr, Bytes) -> Unit] as GDE
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNewWithUtf8Chars)(GDExtensionUninitializedStringPtr r_dest, const char *p_contents);
 /// ```
-pub typealias FuncRef[(GDExtensionUninitializedStringPtr, Bytes) -> Unit] as GDExtensionInterfaceStringNewWithUtf8Chars
+pub type GDExtensionInterfaceStringNewWithUtf8Chars = FuncRef[(GDExtensionUninitializedStringPtr, Bytes) -> Unit]
 
 ///| 
 /// @name string_new_with_utf16_chars
@@ -3736,7 +3736,7 @@ pub typealias FuncRef[(GDExtensionUninitializedStringPtr, Bytes) -> Unit] as GDE
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNewWithUtf16Chars)(GDExtensionUninitializedStringPtr r_dest, const char16_t *p_contents);
 /// ```
-pub typealias FuncRef[(GDExtensionUninitializedStringPtr, String) -> Unit] as GDExtensionInterfaceStringNewWithUtf16Chars
+pub type GDExtensionInterfaceStringNewWithUtf16Chars = FuncRef[(GDExtensionUninitializedStringPtr, String) -> Unit]
 
 ///| 
 /// @name string_new_with_utf32_chars
@@ -3752,7 +3752,7 @@ pub typealias FuncRef[(GDExtensionUninitializedStringPtr, String) -> Unit] as GD
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNewWithUtf32Chars)(GDExtensionUninitializedStringPtr r_dest, const char32_t *p_contents);
 /// ```
-pub typealias FuncRef[(GDExtensionUninitializedStringPtr, String) -> Unit] as GDExtensionInterfaceStringNewWithUtf32Chars
+pub type GDExtensionInterfaceStringNewWithUtf32Chars = FuncRef[(GDExtensionUninitializedStringPtr, String) -> Unit]
 
 ///| 
 /// @name string_new_with_wide_chars
@@ -3768,7 +3768,7 @@ pub typealias FuncRef[(GDExtensionUninitializedStringPtr, String) -> Unit] as GD
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNewWithWideChars)(GDExtensionUninitializedStringPtr r_dest, const wchar_t *p_contents);
 /// ```
-pub typealias FuncRef[(GDExtensionUninitializedStringPtr, String) -> Unit] as GDExtensionInterfaceStringNewWithWideChars
+pub type GDExtensionInterfaceStringNewWithWideChars = FuncRef[(GDExtensionUninitializedStringPtr, String) -> Unit]
 
 ///| 
 /// @name string_new_with_latin1_chars_and_len
@@ -3785,9 +3785,9 @@ pub typealias FuncRef[(GDExtensionUninitializedStringPtr, String) -> Unit] as GD
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNewWithLatin1CharsAndLen)(GDExtensionUninitializedStringPtr r_dest, const char *p_contents, GDExtensionInt p_size);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringNewWithLatin1CharsAndLen = FuncRef[
   (GDExtensionUninitializedStringPtr, String, GDExtensionInt) -> Unit,
-] as GDExtensionInterfaceStringNewWithLatin1CharsAndLen
+]
 
 ///| 
 /// @name string_new_with_utf8_chars_and_len
@@ -3805,9 +3805,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNewWithUtf8CharsAndLen)(GDExtensionUninitializedStringPtr r_dest, const char *p_contents, GDExtensionInt p_size);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringNewWithUtf8CharsAndLen = FuncRef[
   (GDExtensionUninitializedStringPtr, String, GDExtensionInt) -> Unit,
-] as GDExtensionInterfaceStringNewWithUtf8CharsAndLen
+]
 
 ///| 
 /// @name string_new_with_utf8_chars_and_len2
@@ -3826,9 +3826,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionInterfaceStringNewWithUtf8CharsAndLen2)(GDExtensionUninitializedStringPtr r_dest, const char *p_contents, GDExtensionInt p_size);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringNewWithUtf8CharsAndLen2 = FuncRef[
   (GDExtensionUninitializedStringPtr, String, GDExtensionInt) -> GDExtensionInt,
-] as GDExtensionInterfaceStringNewWithUtf8CharsAndLen2
+]
 
 ///| 
 /// @name string_new_with_utf16_chars_and_len
@@ -3846,9 +3846,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNewWithUtf16CharsAndLen)(GDExtensionUninitializedStringPtr r_dest, const char16_t *p_contents, GDExtensionInt p_char_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringNewWithUtf16CharsAndLen = FuncRef[
   (GDExtensionUninitializedStringPtr, String, GDExtensionInt) -> Unit,
-] as GDExtensionInterfaceStringNewWithUtf16CharsAndLen
+]
 
 ///| 
 /// @name string_new_with_utf16_chars_and_len2
@@ -3868,9 +3868,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionInterfaceStringNewWithUtf16CharsAndLen2)(GDExtensionUninitializedStringPtr r_dest, const char16_t *p_contents, GDExtensionInt p_char_count, GDExtensionBool p_default_little_endian);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringNewWithUtf16CharsAndLen2 = FuncRef[
   (GDExtensionUninitializedStringPtr, String, GDExtensionInt, GDExtensionBool) -> GDExtensionInt,
-] as GDExtensionInterfaceStringNewWithUtf16CharsAndLen2
+]
 
 ///| 
 /// @name string_new_with_utf32_chars_and_len
@@ -3887,9 +3887,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNewWithUtf32CharsAndLen)(GDExtensionUninitializedStringPtr r_dest, const char32_t *p_contents, GDExtensionInt p_char_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringNewWithUtf32CharsAndLen = FuncRef[
   (GDExtensionUninitializedStringPtr, String, GDExtensionInt) -> Unit,
-] as GDExtensionInterfaceStringNewWithUtf32CharsAndLen
+]
 
 ///| 
 /// @name string_new_with_wide_chars_and_len
@@ -3906,9 +3906,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNewWithWideCharsAndLen)(GDExtensionUninitializedStringPtr r_dest, const wchar_t *p_contents, GDExtensionInt p_char_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringNewWithWideCharsAndLen = FuncRef[
   (GDExtensionUninitializedStringPtr, String, GDExtensionInt) -> Unit,
-] as GDExtensionInterfaceStringNewWithWideCharsAndLen
+]
 
 ///| 
 /// @name string_to_latin1_chars
@@ -3929,9 +3929,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionInterfaceStringToLatin1Chars)(GDExtensionConstStringPtr p_self, char *r_text, GDExtensionInt p_max_write_length);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringToLatin1Chars = FuncRef[
   (GDExtensionConstStringPtr, String, GDExtensionInt) -> GDExtensionInt,
-] as GDExtensionInterfaceStringToLatin1Chars
+]
 
 ///| 
 /// @name string_to_utf8_chars
@@ -3952,9 +3952,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionInterfaceStringToUtf8Chars)(GDExtensionConstStringPtr p_self, char *r_text, GDExtensionInt p_max_write_length);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringToUtf8Chars = FuncRef[
   (GDExtensionConstStringPtr, String, GDExtensionInt) -> GDExtensionInt,
-] as GDExtensionInterfaceStringToUtf8Chars
+]
 
 ///| 
 /// @name string_to_utf16_chars
@@ -3975,9 +3975,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionInterfaceStringToUtf16Chars)(GDExtensionConstStringPtr p_self, char16_t *r_text, GDExtensionInt p_max_write_length);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringToUtf16Chars = FuncRef[
   (GDExtensionConstStringPtr, String, GDExtensionInt) -> GDExtensionInt,
-] as GDExtensionInterfaceStringToUtf16Chars
+]
 
 ///| 
 /// @name string_to_utf32_chars
@@ -3998,9 +3998,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionInterfaceStringToUtf32Chars)(GDExtensionConstStringPtr p_self, char32_t *r_text, GDExtensionInt p_max_write_length);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringToUtf32Chars = FuncRef[
   (GDExtensionConstStringPtr, String, GDExtensionInt) -> GDExtensionInt,
-] as GDExtensionInterfaceStringToUtf32Chars
+]
 
 ///| 
 /// @name string_to_wide_chars
@@ -4021,9 +4021,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionInterfaceStringToWideChars)(GDExtensionConstStringPtr p_self, wchar_t *r_text, GDExtensionInt p_max_write_length);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringToWideChars = FuncRef[
   (GDExtensionConstStringPtr, String, GDExtensionInt) -> GDExtensionInt,
-] as GDExtensionInterfaceStringToWideChars
+]
 
 ///| 
 /// @name string_operator_index
@@ -4041,7 +4041,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef char32_t *(*GDExtensionInterfaceStringOperatorIndex)(GDExtensionStringPtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionStringPtr, GDExtensionInt) -> String] as GDExtensionInterfaceStringOperatorIndex
+pub type GDExtensionInterfaceStringOperatorIndex = FuncRef[(GDExtensionStringPtr, GDExtensionInt) -> String]
 
 ///| 
 /// @name string_operator_index_const
@@ -4059,7 +4059,7 @@ pub typealias FuncRef[(GDExtensionStringPtr, GDExtensionInt) -> String] as GDExt
 /// ```c
 /// typedef const char32_t *(*GDExtensionInterfaceStringOperatorIndexConst)(GDExtensionConstStringPtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionConstStringPtr, GDExtensionInt) -> String] as GDExtensionInterfaceStringOperatorIndexConst
+pub type GDExtensionInterfaceStringOperatorIndexConst = FuncRef[(GDExtensionConstStringPtr, GDExtensionInt) -> String]
 
 ///| 
 /// @name string_operator_plus_eq_string
@@ -4075,7 +4075,7 @@ pub typealias FuncRef[(GDExtensionConstStringPtr, GDExtensionInt) -> String] as 
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringOperatorPlusEqString)(GDExtensionStringPtr p_self, GDExtensionConstStringPtr p_b);
 /// ```
-pub typealias FuncRef[(GDExtensionStringPtr, GDExtensionConstStringPtr) -> Unit] as GDExtensionInterfaceStringOperatorPlusEqString
+pub type GDExtensionInterfaceStringOperatorPlusEqString = FuncRef[(GDExtensionStringPtr, GDExtensionConstStringPtr) -> Unit]
 
 ///| 
 /// @name string_operator_plus_eq_char
@@ -4091,7 +4091,7 @@ pub typealias FuncRef[(GDExtensionStringPtr, GDExtensionConstStringPtr) -> Unit]
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringOperatorPlusEqChar)(GDExtensionStringPtr p_self, char32_t p_b);
 /// ```
-pub typealias FuncRef[(GDExtensionStringPtr, String) -> Unit] as GDExtensionInterfaceStringOperatorPlusEqChar
+pub type GDExtensionInterfaceStringOperatorPlusEqChar = FuncRef[(GDExtensionStringPtr, String) -> Unit]
 
 ///| 
 /// @name string_operator_plus_eq_cstr
@@ -4107,7 +4107,7 @@ pub typealias FuncRef[(GDExtensionStringPtr, String) -> Unit] as GDExtensionInte
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringOperatorPlusEqCstr)(GDExtensionStringPtr p_self, const char *p_b);
 /// ```
-pub typealias FuncRef[(GDExtensionStringPtr, String) -> Unit] as GDExtensionInterfaceStringOperatorPlusEqCstr
+pub type GDExtensionInterfaceStringOperatorPlusEqCstr = FuncRef[(GDExtensionStringPtr, String) -> Unit]
 
 ///| 
 /// @name string_operator_plus_eq_wcstr
@@ -4138,7 +4138,7 @@ pub typealias FuncRef[(GDExtensionStringPtr, String) -> Unit] as GDExtensionInte
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringOperatorPlusEqC32str)(GDExtensionStringPtr p_self, const char32_t *p_b);
 /// ```
-pub typealias FuncRef[(GDExtensionStringPtr, String) -> Unit] as GDExtensionInterfaceStringOperatorPlusEqC32str
+pub type GDExtensionInterfaceStringOperatorPlusEqC32str = FuncRef[(GDExtensionStringPtr, String) -> Unit]
 
 ///| 
 /// @name string_resize
@@ -4162,7 +4162,7 @@ pub typealias FuncRef[(GDExtensionStringPtr, String) -> Unit] as GDExtensionInte
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionInterfaceStringResize)(GDExtensionStringPtr p_self, GDExtensionInt p_resize);
 /// ```
-pub typealias FuncRef[(GDExtensionStringPtr, GDExtensionInt) -> GDExtensionInt] as GDExtensionInterfaceStringResize
+pub type GDExtensionInterfaceStringResize = FuncRef[(GDExtensionStringPtr, GDExtensionInt) -> GDExtensionInt]
 
 ///|
 /// 
@@ -4187,9 +4187,9 @@ pub typealias FuncRef[(GDExtensionStringPtr, GDExtensionInt) -> GDExtensionInt] 
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNameNewWithLatin1Chars)(GDExtensionUninitializedStringNamePtr r_dest, const char *p_contents, GDExtensionBool p_is_static);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringNameNewWithLatin1Chars = FuncRef[
   (GDExtensionUninitializedStringNamePtr, String, GDExtensionBool) -> Unit,
-] as GDExtensionInterfaceStringNameNewWithLatin1Chars
+]
 
 ///| 
 ///  @name string_name_new_with_utf8_chars
@@ -4205,7 +4205,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNameNewWithUtf8Chars)(GDExtensionUninitializedStringNamePtr r_dest, const char *p_contents);
 /// ```
-pub typealias FuncRef[(GDExtensionUninitializedStringNamePtr, Bytes) -> Unit] as GDExtensionInterfaceStringNameNewWithUtf8Chars
+pub type GDExtensionInterfaceStringNameNewWithUtf8Chars = FuncRef[(GDExtensionUninitializedStringNamePtr, Bytes) -> Unit]
 
 ///| 
 ///  @name string_name_new_with_utf8_chars_and_len
@@ -4222,9 +4222,9 @@ pub typealias FuncRef[(GDExtensionUninitializedStringNamePtr, Bytes) -> Unit] as
 /// ```c
 /// typedef void (*GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen)(GDExtensionUninitializedStringNamePtr r_dest, const char *p_contents, GDExtensionInt p_size);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen = FuncRef[
   (GDExtensionUninitializedStringNamePtr, String, GDExtensionInt) -> Unit,
-] as GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen
+]
 
 ///|
 /// 
@@ -4247,7 +4247,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionInt (*GDExtensionInterfaceXmlParserOpenBuffer)(GDExtensionObjectPtr p_instance, const uint8_t *p_buffer, size_t p_size);
 /// ```
-pub typealias FuncRef[(GDExtensionObjectPtr, Bytes, UInt64) -> GDExtensionInt] as GDExtensionInterfaceXmlParserOpenBuffer
+pub type GDExtensionInterfaceXmlParserOpenBuffer = FuncRef[(GDExtensionObjectPtr, Bytes, UInt64) -> GDExtensionInt]
 
 ///|
 /// 
@@ -4268,7 +4268,7 @@ pub typealias FuncRef[(GDExtensionObjectPtr, Bytes, UInt64) -> GDExtensionInt] a
 /// ```c
 /// typedef void (*GDExtensionInterfaceFileAccessStoreBuffer)(GDExtensionObjectPtr p_instance, const uint8_t *p_src, uint64_t p_length);
 /// ```
-pub typealias FuncRef[(GDExtensionObjectPtr, Bytes, UInt64) -> Unit] as GDExtensionInterfaceFileAccessStoreBuffer
+pub type GDExtensionInterfaceFileAccessStoreBuffer = FuncRef[(GDExtensionObjectPtr, Bytes, UInt64) -> Unit]
 
 ///| 
 /// @name file_access_get_buffer
@@ -4287,7 +4287,7 @@ pub typealias FuncRef[(GDExtensionObjectPtr, Bytes, UInt64) -> Unit] as GDExtens
 /// ```c
 /// typedef uint64_t (*GDExtensionInterfaceFileAccessGetBuffer)(GDExtensionConstObjectPtr p_instance, uint8_t *p_dst, uint64_t p_length);
 /// ```
-pub typealias FuncRef[(GDExtensionConstObjectPtr, Bytes, UInt64) -> UInt64] as GDExtensionInterfaceFileAccessGetBuffer
+pub type GDExtensionInterfaceFileAccessGetBuffer = FuncRef[(GDExtensionConstObjectPtr, Bytes, UInt64) -> UInt64]
 
 ///|
 /// 
@@ -4308,7 +4308,7 @@ pub typealias FuncRef[(GDExtensionConstObjectPtr, Bytes, UInt64) -> UInt64] as G
 /// ```c
 /// typedef uint8_t *(*GDExtensionInterfaceImagePtrw)(GDExtensionObjectPtr p_instance);
 /// ```
-pub typealias FuncRef[(GDExtensionObjectPtr) -> Bytes] as GDExtensionInterfaceImagePtrw
+pub type GDExtensionInterfaceImagePtrw = FuncRef[(GDExtensionObjectPtr) -> Bytes]
 
 ///| 
 /// @name image_ptr
@@ -4327,7 +4327,7 @@ pub typealias FuncRef[(GDExtensionObjectPtr) -> Bytes] as GDExtensionInterfaceIm
 /// ```c
 /// typedef const uint8_t *(*GDExtensionInterfaceImagePtr)(GDExtensionObjectPtr p_instance);
 /// ```
-pub typealias FuncRef[(GDExtensionObjectPtr) -> Bytes] as GDExtensionInterfaceImagePtr
+pub type GDExtensionInterfaceImagePtr = FuncRef[(GDExtensionObjectPtr) -> Bytes]
 
 ///|
 /// 
@@ -4360,7 +4360,7 @@ pub typealias FuncRef[(GDExtensionObjectPtr) -> Bytes] as GDExtensionInterfaceIm
 ///   GDExtensionBool p_high_priority,
 ///   GDExtensionConstStringPtr p_description);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask = FuncRef[
   (
     GDExtensionObjectPtr,
     FuncRef[(Unit, UInt) -> Unit],
@@ -4370,7 +4370,7 @@ pub typealias FuncRef[
     GDExtensionBool,
     GDExtensionConstStringPtr,
   ) -> Int64,
-] as GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask
+]
 
 ///| 
 /// @name worker_thread_pool_add_native_task
@@ -4396,7 +4396,7 @@ pub typealias FuncRef[
 ///   GDExtensionBool p_high_priority,
 ///   GDExtensionConstStringPtr p_description);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceWorkerThreadPoolAddNativeTask = FuncRef[
   (
     GDExtensionObjectPtr,
     FuncRef[() -> Unit],
@@ -4404,7 +4404,7 @@ pub typealias FuncRef[
     GDExtensionBool,
     GDExtensionConstStringPtr,
   ) -> Int64,
-] as GDExtensionInterfaceWorkerThreadPoolAddNativeTask
+]
 
 ///|
 /// 
@@ -4424,7 +4424,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef uint8_t *(*GDExtensionInterfacePackedByteArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Byte] as GDExtensionInterfacePackedByteArrayOperatorIndex
+pub type GDExtensionInterfacePackedByteArrayOperatorIndex = FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Byte]
 
 ///| 
 /// @name packed_byte_array_operator_index_const
@@ -4442,7 +4442,7 @@ pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Byte] as GDExtensi
 /// ```c
 /// typedef const uint8_t *(*GDExtensionInterfacePackedByteArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Byte] as GDExtensionInterfacePackedByteArrayOperatorIndexConst
+pub type GDExtensionInterfacePackedByteArrayOperatorIndexConst = FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Byte]
 
 ///| 
 /// @name packed_float32_array_operator_index
@@ -4460,7 +4460,7 @@ pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Byte] as GDEx
 /// ```c
 /// typedef float *(*GDExtensionInterfacePackedFloat32ArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Float] as GDExtensionInterfacePackedFloat32ArrayOperatorIndex
+pub type GDExtensionInterfacePackedFloat32ArrayOperatorIndex = FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Float]
 
 ///| 
 /// @name packed_float32_array_operator_index_const
@@ -4478,7 +4478,7 @@ pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Float] as GDExtens
 /// ```c
 /// typedef const float *(*GDExtensionInterfacePackedFloat32ArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Float] as GDExtensionInterfacePackedFloat32ArrayOperatorIndexConst
+pub type GDExtensionInterfacePackedFloat32ArrayOperatorIndexConst = FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Float]
 
 ///| 
 /// @name packed_float64_array_operator_index
@@ -4496,7 +4496,7 @@ pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Float] as GDE
 /// ```c
 /// typedef double *(*GDExtensionInterfacePackedFloat64ArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Double] as GDExtensionInterfacePackedFloat64ArrayOperatorIndex
+pub type GDExtensionInterfacePackedFloat64ArrayOperatorIndex = FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Double]
 
 ///| 
 /// @name packed_float64_array_operator_index_const
@@ -4514,7 +4514,7 @@ pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Double] as GDExten
 /// ```c
 /// typedef const double *(*GDExtensionInterfacePackedFloat64ArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Double] as GDExtensionInterfacePackedFloat64ArrayOperatorIndexConst
+pub type GDExtensionInterfacePackedFloat64ArrayOperatorIndexConst = FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Double]
 
 ///| 
 /// @name packed_int32_array_operator_index
@@ -4532,7 +4532,7 @@ pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Double] as GD
 /// ```c
 /// typedef int32_t *(*GDExtensionInterfacePackedInt32ArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Int] as GDExtensionInterfacePackedInt32ArrayOperatorIndex
+pub type GDExtensionInterfacePackedInt32ArrayOperatorIndex = FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Int]
 
 ///| 
 ///  @name packed_int32_array_operator_index_const
@@ -4550,7 +4550,7 @@ pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Int] as GDExtensio
 /// ```c
 /// typedef const int32_t *(*GDExtensionInterfacePackedInt32ArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Int] as GDExtensionInterfacePackedInt32ArrayOperatorIndexConst
+pub type GDExtensionInterfacePackedInt32ArrayOperatorIndexConst = FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Int]
 
 ///| 
 ///  @name packed_int64_array_operator_index
@@ -4568,7 +4568,7 @@ pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Int] as GDExt
 /// ```c
 /// typedef int64_t *(*GDExtensionInterfacePackedInt64ArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Int64] as GDExtensionInterfacePackedInt64ArrayOperatorIndex
+pub type GDExtensionInterfacePackedInt64ArrayOperatorIndex = FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Int64]
 
 ///| 
 /// @name packed_int64_array_operator_index_const
@@ -4586,7 +4586,7 @@ pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionInt) -> Int64] as GDExtens
 /// ```c
 /// typedef const int64_t *(*GDExtensionInterfacePackedInt64ArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Int64] as GDExtensionInterfacePackedInt64ArrayOperatorIndexConst
+pub type GDExtensionInterfacePackedInt64ArrayOperatorIndexConst = FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Int64]
 
 ///| 
 ///  @name packed_string_array_operator_index
@@ -4604,9 +4604,9 @@ pub typealias FuncRef[(GDExtensionConstTypePtr, GDExtensionInt) -> Int64] as GDE
 /// ```c
 /// typedef GDExtensionStringPtr (*GDExtensionInterfacePackedStringArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePackedStringArrayOperatorIndex = FuncRef[
   (GDExtensionTypePtr, GDExtensionInt) -> GDExtensionStringPtr,
-] as GDExtensionInterfacePackedStringArrayOperatorIndex
+]
 
 ///| 
 ///  @name packed_string_array_operator_index_const
@@ -4624,9 +4624,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionStringPtr (*GDExtensionInterfacePackedStringArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePackedStringArrayOperatorIndexConst = FuncRef[
   (GDExtensionConstTypePtr, GDExtensionInt) -> GDExtensionStringPtr,
-] as GDExtensionInterfacePackedStringArrayOperatorIndexConst
+]
 
 ///| 
 /// @name packed_vector2_array_operator_index
@@ -4644,9 +4644,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionTypePtr (*GDExtensionInterfacePackedVector2ArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePackedVector2ArrayOperatorIndex = FuncRef[
   (GDExtensionTypePtr, GDExtensionInt) -> GDExtensionTypePtr,
-] as GDExtensionInterfacePackedVector2ArrayOperatorIndex
+]
 
 ///| 
 /// @name packed_vector2_array_operator_index_const
@@ -4664,9 +4664,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionTypePtr (*GDExtensionInterfacePackedVector2ArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePackedVector2ArrayOperatorIndexConst = FuncRef[
   (GDExtensionConstTypePtr, GDExtensionInt) -> GDExtensionTypePtr,
-] as GDExtensionInterfacePackedVector2ArrayOperatorIndexConst
+]
 
 ///| 
 /// @name packed_vector3_array_operator_index
@@ -4684,9 +4684,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionTypePtr (*GDExtensionInterfacePackedVector3ArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePackedVector3ArrayOperatorIndex = FuncRef[
   (GDExtensionTypePtr, GDExtensionInt) -> GDExtensionTypePtr,
-] as GDExtensionInterfacePackedVector3ArrayOperatorIndex
+]
 
 ///| 
 /// @name packed_vector3_array_operator_index_const
@@ -4704,9 +4704,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionTypePtr (*GDExtensionInterfacePackedVector3ArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePackedVector3ArrayOperatorIndexConst = FuncRef[
   (GDExtensionConstTypePtr, GDExtensionInt) -> GDExtensionTypePtr,
-] as GDExtensionInterfacePackedVector3ArrayOperatorIndexConst
+]
 
 ///| 
 /// @name packed_vector4_array_operator_index
@@ -4724,9 +4724,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionTypePtr (*GDExtensionInterfacePackedVector4ArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePackedVector4ArrayOperatorIndex = FuncRef[
   (GDExtensionTypePtr, GDExtensionInt) -> GDExtensionTypePtr,
-] as GDExtensionInterfacePackedVector4ArrayOperatorIndex
+]
 
 ///| 
 /// @name packed_vector4_array_operator_index_const
@@ -4744,9 +4744,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionTypePtr (*GDExtensionInterfacePackedVector4ArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePackedVector4ArrayOperatorIndexConst = FuncRef[
   (GDExtensionConstTypePtr, GDExtensionInt) -> GDExtensionTypePtr,
-] as GDExtensionInterfacePackedVector4ArrayOperatorIndexConst
+]
 
 ///| 
 /// @name packed_color_array_operator_index
@@ -4764,9 +4764,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionTypePtr (*GDExtensionInterfacePackedColorArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePackedColorArrayOperatorIndex = FuncRef[
   (GDExtensionTypePtr, GDExtensionInt) -> GDExtensionTypePtr,
-] as GDExtensionInterfacePackedColorArrayOperatorIndex
+]
 
 ///| 
 /// @name packed_color_array_operator_index_const
@@ -4784,9 +4784,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionTypePtr (*GDExtensionInterfacePackedColorArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePackedColorArrayOperatorIndexConst = FuncRef[
   (GDExtensionConstTypePtr, GDExtensionInt) -> GDExtensionTypePtr,
-] as GDExtensionInterfacePackedColorArrayOperatorIndexConst
+]
 
 ///| 
 /// @name array_operator_index
@@ -4804,9 +4804,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionVariantPtr (*GDExtensionInterfaceArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceArrayOperatorIndex = FuncRef[
   (GDExtensionTypePtr, GDExtensionInt) -> GDExtensionVariantPtr,
-] as GDExtensionInterfaceArrayOperatorIndex
+]
 
 ///| 
 /// @name array_operator_index_const
@@ -4824,9 +4824,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionVariantPtr (*GDExtensionInterfaceArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceArrayOperatorIndexConst = FuncRef[
   (GDExtensionConstTypePtr, GDExtensionInt) -> GDExtensionVariantPtr,
-] as GDExtensionInterfaceArrayOperatorIndexConst
+]
 
 ///| 
 /// @name array_ref
@@ -4842,7 +4842,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceArrayRef)(GDExtensionTypePtr p_self, GDExtensionConstTypePtr p_from);
 /// ```
-pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr) -> Unit] as GDExtensionInterfaceArrayRef
+pub type GDExtensionInterfaceArrayRef = FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr) -> Unit]
 
 ///| 
 /// @name array_set_typed
@@ -4860,14 +4860,14 @@ pub typealias FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr) -> Unit] as 
 /// ```c
 /// typedef void (*GDExtensionInterfaceArraySetTyped)(GDExtensionTypePtr p_self, GDExtensionVariantType p_type, GDExtensionConstStringNamePtr p_class_name, GDExtensionConstVariantPtr p_script);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceArraySetTyped = FuncRef[
   (
     GDExtensionTypePtr,
     GDExtensionVariantType,
     GDExtensionConstStringNamePtr,
     GDExtensionConstVariantPtr,
   ) -> Unit,
-] as GDExtensionInterfaceArraySetTyped
+]
 
 ///|
 /// 
@@ -4887,9 +4887,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionVariantPtr (*GDExtensionInterfaceDictionaryOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionConstVariantPtr p_key);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceDictionaryOperatorIndex = FuncRef[
   (GDExtensionTypePtr, GDExtensionConstVariantPtr) -> GDExtensionVariantPtr,
-] as GDExtensionInterfaceDictionaryOperatorIndex
+]
 
 ///| 
 /// @name dictionary_operator_index_const
@@ -4907,9 +4907,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionVariantPtr (*GDExtensionInterfaceDictionaryOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionConstVariantPtr p_key);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceDictionaryOperatorIndexConst = FuncRef[
   (GDExtensionConstTypePtr, GDExtensionConstVariantPtr) -> GDExtensionVariantPtr,
-] as GDExtensionInterfaceDictionaryOperatorIndexConst
+]
 
 ///| 
 /// @name dictionary_set_typed
@@ -4937,7 +4937,7 @@ pub typealias FuncRef[
 ///   GDExtensionConstStringNamePtr p_value_class_name,
 ///   GDExtensionConstVariantPtr p_value_script);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceDictionarySetTyped = FuncRef[
   (
     GDExtensionTypePtr,
     GDExtensionVariantType,
@@ -4947,7 +4947,7 @@ pub typealias FuncRef[
     GDExtensionConstStringNamePtr,
     GDExtensionConstVariantPtr,
   ) -> Unit,
-] as GDExtensionInterfaceDictionarySetTyped
+]
 
 ///|
 /// 
@@ -4974,7 +4974,7 @@ pub typealias FuncRef[
 ///   GDExtensionUninitializedVariantPtr r_ret,
 ///   GDExtensionCallError *r_error);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceObjectMethodBindCall = FuncRef[
   (
     GDExtensionMethodBindPtr,
     GDExtensionObjectPtr,
@@ -4983,7 +4983,7 @@ pub typealias FuncRef[
     GDExtensionUninitializedVariantPtr,
     GDExtensionCallError,
   ) -> Unit,
-] as GDExtensionInterfaceObjectMethodBindCall
+]
 
 ///| 
 /// @name object_method_bind_ptrcall
@@ -5001,14 +5001,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceObjectMethodBindPtrcall)(GDExtensionMethodBindPtr p_method_bind, GDExtensionObjectPtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceObjectMethodBindPtrcall = FuncRef[
   (
     GDExtensionMethodBindPtr,
     GDExtensionObjectPtr,
     FixedArray[GDExtensionConstTypePtr],
     GDExtensionTypePtr,
   ) -> Unit,
-] as GDExtensionInterfaceObjectMethodBindPtrcall
+]
 
 ///| 
 /// @name object_destroy
@@ -5023,7 +5023,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceObjectDestroy)(GDExtensionObjectPtr p_o);
 /// ```
-pub typealias FuncRef[(GDExtensionObjectPtr) -> Unit] as GDExtensionInterfaceObjectDestroy
+pub type GDExtensionInterfaceObjectDestroy = FuncRef[(GDExtensionObjectPtr) -> Unit]
 
 ///| 
 /// @name global_get_singleton
@@ -5040,7 +5040,7 @@ pub typealias FuncRef[(GDExtensionObjectPtr) -> Unit] as GDExtensionInterfaceObj
 /// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionInterfaceGlobalGetSingleton)(GDExtensionConstStringNamePtr p_name);
 /// ```
-pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr] as GDExtensionInterfaceGlobalGetSingleton
+pub type GDExtensionInterfaceGlobalGetSingleton = FuncRef[(GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr]
 
 ///| 
 /// @name object_get_instance_binding
@@ -5059,9 +5059,9 @@ pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr] a
 /// ```c
 /// typedef void *(*GDExtensionInterfaceObjectGetInstanceBinding)(GDExtensionObjectPtr p_o, void *p_token, const GDExtensionInstanceBindingCallbacks *p_callbacks);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceObjectGetInstanceBinding = FuncRef[
   (GDExtensionObjectPtr, VoidPtr, GDExtensionInstanceBindingCallbacks) -> Unit,
-] as GDExtensionInterfaceObjectGetInstanceBinding
+]
 
 ///| 
 /// @name object_set_instance_binding
@@ -5079,9 +5079,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceObjectSetInstanceBinding)(GDExtensionObjectPtr p_o, void *p_token, void *p_binding, const GDExtensionInstanceBindingCallbacks *p_callbacks);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceObjectSetInstanceBinding = FuncRef[
   (GDExtensionObjectPtr, VoidPtr, VoidPtr, GDExtensionInstanceBindingCallbacks) -> Unit,
-] as GDExtensionInterfaceObjectSetInstanceBinding
+]
 
 ///| 
 /// @name object_free_instance_binding
@@ -5097,7 +5097,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceObjectFreeInstanceBinding)(GDExtensionObjectPtr p_o, void *p_token);
 /// ```
-pub typealias FuncRef[(GDExtensionObjectPtr, VoidPtr) -> Unit] as GDExtensionInterfaceObjectFreeInstanceBinding
+pub type GDExtensionInterfaceObjectFreeInstanceBinding = FuncRef[(GDExtensionObjectPtr, VoidPtr) -> Unit]
 
 ///| 
 /// @name object_set_instance
@@ -5114,13 +5114,13 @@ pub typealias FuncRef[(GDExtensionObjectPtr, VoidPtr) -> Unit] as GDExtensionInt
 /// ```c
 /// typedef void (*GDExtensionInterfaceObjectSetInstance)(GDExtensionObjectPtr p_o, GDExtensionConstStringNamePtr p_classname, GDExtensionClassInstancePtr p_instance); /* p_classname should be a registered extension class and should extend the p_o object's class. */
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceObjectSetInstance = FuncRef[
   (
     GDExtensionObjectPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionClassInstancePtr,
   ) -> Unit,
-] as GDExtensionInterfaceObjectSetInstance
+]
 
 ///| 
 /// @name object_get_class_name
@@ -5142,13 +5142,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInterfaceObjectGetClassName)(GDExtensionConstObjectPtr p_object, GDExtensionClassLibraryPtr p_library, GDExtensionUninitializedStringNamePtr r_class_name);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceObjectGetClassName = FuncRef[
   (
     GDExtensionConstObjectPtr,
     GDExtensionClassLibraryPtr,
     GDExtensionUninitializedStringNamePtr,
   ) -> GDExtensionBool,
-] as GDExtensionInterfaceObjectGetClassName
+]
 
 ///| 
 /// @name object_cast_to
@@ -5166,9 +5166,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionInterfaceObjectCastTo)(GDExtensionConstObjectPtr p_object, void *p_class_tag);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceObjectCastTo = FuncRef[
   (GDExtensionConstObjectPtr, VoidPtr) -> GDExtensionObjectPtr,
-] as GDExtensionInterfaceObjectCastTo
+]
 
 ///| 
 /// @name object_get_instance_from_id
@@ -5185,7 +5185,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionInterfaceObjectGetInstanceFromId)(GDObjectInstanceID p_instance_id);
 /// ```
-pub typealias FuncRef[(GDObjectInstanceID) -> GDExtensionObjectPtr] as GDExtensionInterfaceObjectGetInstanceFromId
+pub type GDExtensionInterfaceObjectGetInstanceFromId = FuncRef[(GDObjectInstanceID) -> GDExtensionObjectPtr]
 
 ///| 
 /// @name object_get_instance_id
@@ -5202,7 +5202,7 @@ pub typealias FuncRef[(GDObjectInstanceID) -> GDExtensionObjectPtr] as GDExtensi
 /// ```c
 /// typedef GDObjectInstanceID (*GDExtensionInterfaceObjectGetInstanceId)(GDExtensionConstObjectPtr p_object);
 /// ```
-pub typealias FuncRef[(GDExtensionConstObjectPtr) -> GDObjectInstanceID] as GDExtensionInterfaceObjectGetInstanceId
+pub type GDExtensionInterfaceObjectGetInstanceId = FuncRef[(GDExtensionConstObjectPtr) -> GDObjectInstanceID]
 
 ///| 
 /// @name object_has_script_method
@@ -5220,9 +5220,9 @@ pub typealias FuncRef[(GDExtensionConstObjectPtr) -> GDObjectInstanceID] as GDEx
 /// ```c
 /// typedef GDExtensionBool (*GDExtensionInterfaceObjectHasScriptMethod)(GDExtensionConstObjectPtr p_object, GDExtensionConstStringNamePtr p_method);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceObjectHasScriptMethod = FuncRef[
   (GDExtensionConstObjectPtr, GDExtensionConstStringNamePtr) -> GDExtensionBool,
-] as GDExtensionInterfaceObjectHasScriptMethod
+]
 
 ///| 
 /// @name object_call_script_method
@@ -5242,7 +5242,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceObjectCallScriptMethod)(GDExtensionObjectPtr p_object, GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionUninitializedVariantPtr r_return, GDExtensionCallError *r_error);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceObjectCallScriptMethod = FuncRef[
   (
     GDExtensionObjectPtr,
     GDExtensionConstStringNamePtr,
@@ -5251,7 +5251,7 @@ pub typealias FuncRef[
     GDExtensionUninitializedVariantPtr,
     GDExtensionCallError,
   ) -> Unit,
-] as GDExtensionInterfaceObjectCallScriptMethod
+]
 
 ///|
 /// 
@@ -5270,7 +5270,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionInterfaceRefGetObject)(GDExtensionConstRefPtr p_ref);
 /// ```
-pub typealias FuncRef[(GDExtensionConstRefPtr) -> GDExtensionObjectPtr] as GDExtensionInterfaceRefGetObject
+pub type GDExtensionInterfaceRefGetObject = FuncRef[(GDExtensionConstRefPtr) -> GDExtensionObjectPtr]
 
 ///| 
 /// 
@@ -5287,7 +5287,7 @@ pub typealias FuncRef[(GDExtensionConstRefPtr) -> GDExtensionObjectPtr] as GDExt
 /// ```c
 /// typedef void (*GDExtensionInterfaceRefSetObject)(GDExtensionRefPtr p_ref, GDExtensionObjectPtr p_object);
 /// ```
-pub typealias FuncRef[(GDExtensionRefPtr, GDExtensionObjectPtr) -> Unit] as GDExtensionInterfaceRefSetObject
+pub type GDExtensionInterfaceRefSetObject = FuncRef[(GDExtensionRefPtr, GDExtensionObjectPtr) -> Unit]
 
 ///|
 /// 
@@ -5308,9 +5308,9 @@ pub typealias FuncRef[(GDExtensionRefPtr, GDExtensionObjectPtr) -> Unit] as GDEx
 /// ```c
 /// typedef GDExtensionScriptInstancePtr (*GDExtensionInterfaceScriptInstanceCreate)(const GDExtensionScriptInstanceInfo *p_info, GDExtensionScriptInstanceDataPtr p_instance_data);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceScriptInstanceCreate = FuncRef[
   (GDExtensionScriptInstanceInfo, GDExtensionScriptInstanceDataPtr) -> GDExtensionScriptInstancePtr,
-] as GDExtensionInterfaceScriptInstanceCreate
+]
 
 ///| 
 /// @name script_instance_create2
@@ -5329,9 +5329,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionScriptInstancePtr (*GDExtensionInterfaceScriptInstanceCreate2)(const GDExtensionScriptInstanceInfo2 *p_info, GDExtensionScriptInstanceDataPtr p_instance_data);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceScriptInstanceCreate2 = FuncRef[
   (GDExtensionScriptInstanceInfo2, GDExtensionScriptInstanceDataPtr) -> GDExtensionScriptInstancePtr,
-] as GDExtensionInterfaceScriptInstanceCreate2
+]
 
 ///| 
 /// @name script_instance_create3
@@ -5349,9 +5349,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionScriptInstancePtr (*GDExtensionInterfaceScriptInstanceCreate3)(const GDExtensionScriptInstanceInfo3 *p_info, GDExtensionScriptInstanceDataPtr p_instance_data);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceScriptInstanceCreate3 = FuncRef[
   (GDExtensionScriptInstanceInfo3, GDExtensionScriptInstanceDataPtr) -> GDExtensionScriptInstancePtr,
-] as GDExtensionInterfaceScriptInstanceCreate3
+]
 
 ///| 
 /// @name placeholder_script_instance_create
@@ -5372,9 +5372,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionScriptInstancePtr (*GDExtensionInterfacePlaceHolderScriptInstanceCreate)(GDExtensionObjectPtr p_language, GDExtensionObjectPtr p_script, GDExtensionObjectPtr p_owner);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePlaceHolderScriptInstanceCreate = FuncRef[
   (GDExtensionObjectPtr, GDExtensionObjectPtr, GDExtensionObjectPtr) -> GDExtensionScriptInstancePtr,
-] as GDExtensionInterfacePlaceHolderScriptInstanceCreate
+]
 
 ///| 
 /// @name placeholder_script_instance_update
@@ -5394,13 +5394,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfacePlaceHolderScriptInstanceUpdate)(GDExtensionScriptInstancePtr p_placeholder, GDExtensionConstTypePtr p_properties, GDExtensionConstTypePtr p_values);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfacePlaceHolderScriptInstanceUpdate = FuncRef[
   (
     GDExtensionScriptInstancePtr,
     GDExtensionConstTypePtr,
     GDExtensionConstTypePtr,
   ) -> Unit,
-] as GDExtensionInterfacePlaceHolderScriptInstanceUpdate
+]
 
 ///| 
 /// @name object_get_script_instance
@@ -5418,9 +5418,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef GDExtensionScriptInstanceDataPtr (*GDExtensionInterfaceObjectGetScriptInstance)(GDExtensionConstObjectPtr p_object, GDExtensionObjectPtr p_language);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceObjectGetScriptInstance = FuncRef[
   (GDExtensionConstObjectPtr, GDExtensionObjectPtr) -> GDExtensionScriptInstanceDataPtr,
-] as GDExtensionInterfaceObjectGetScriptInstance
+]
 
 ///|
 /// 
@@ -5441,9 +5441,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceCallableCustomCreate)(GDExtensionUninitializedTypePtr r_callable, GDExtensionCallableCustomInfo *p_callable_custom_info);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceCallableCustomCreate = FuncRef[
   (GDExtensionUninitializedTypePtr, GDExtensionCallableCustomInfo) -> Unit,
-] as GDExtensionInterfaceCallableCustomCreate
+]
 
 ///| 
 /// @name callable_custom_create2
@@ -5461,9 +5461,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceCallableCustomCreate2)(GDExtensionUninitializedTypePtr r_callable, GDExtensionCallableCustomInfo2 *p_callable_custom_info);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceCallableCustomCreate2 = FuncRef[
   (GDExtensionUninitializedTypePtr, GDExtensionCallableCustomInfo2) -> Unit,
-] as GDExtensionInterfaceCallableCustomCreate2
+]
 
 ///| 
 /// @name callable_custom_get_userdata
@@ -5481,7 +5481,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void *(*GDExtensionInterfaceCallableCustomGetUserData)(GDExtensionConstTypePtr p_callable, void *p_token);
 /// ```
-pub typealias FuncRef[(GDExtensionConstTypePtr, VoidPtr) -> VoidPtr] as GDExtensionInterfaceCallableCustomGetUserData
+pub type GDExtensionInterfaceCallableCustomGetUserData = FuncRef[(GDExtensionConstTypePtr, VoidPtr) -> VoidPtr]
 
 ///|
 /// 
@@ -5503,7 +5503,7 @@ pub typealias FuncRef[(GDExtensionConstTypePtr, VoidPtr) -> VoidPtr] as GDExtens
 /// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionInterfaceClassdbConstructObject)(GDExtensionConstStringNamePtr p_classname);
 /// ```
-pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr] as GDExtensionInterfaceClassdbConstructObject
+pub type GDExtensionInterfaceClassdbConstructObject = FuncRef[(GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr]
 
 ///| 
 /// @name classdb_construct_object2
@@ -5524,7 +5524,7 @@ pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr] a
 /// ```c
 /// typedef GDExtensionObjectPtr (*GDExtensionInterfaceClassdbConstructObject2)(GDExtensionConstStringNamePtr p_classname);
 /// ```
-pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr] as GDExtensionInterfaceClassdbConstructObject2
+pub type GDExtensionInterfaceClassdbConstructObject2 = FuncRef[(GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr]
 
 ///| 
 /// @name classdb_get_method_bind
@@ -5543,9 +5543,9 @@ pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> GDExtensionObjectPtr] a
 /// ```c
 /// typedef GDExtensionMethodBindPtr (*GDExtensionInterfaceClassdbGetMethodBind)(GDExtensionConstStringNamePtr p_classname, GDExtensionConstStringNamePtr p_methodname, GDExtensionInt p_hash);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbGetMethodBind = FuncRef[
   (GDExtensionConstStringNamePtr, GDExtensionConstStringNamePtr, GDExtensionInt) -> GDExtensionMethodBindPtr,
-] as GDExtensionInterfaceClassdbGetMethodBind
+]
 
 ///| 
 /// @name classdb_get_class_tag
@@ -5562,7 +5562,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void *(*GDExtensionInterfaceClassdbGetClassTag)(GDExtensionConstStringNamePtr p_classname);
 /// ```
-pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> VoidPtr] as GDExtensionInterfaceClassdbGetClassTag
+pub type GDExtensionInterfaceClassdbGetClassTag = FuncRef[(GDExtensionConstStringNamePtr) -> VoidPtr]
 
 ///|
 /// 
@@ -5585,14 +5585,14 @@ pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> VoidPtr] as GDExtension
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClass)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, GDExtensionConstStringNamePtr p_parent_class_name, const GDExtensionClassCreationInfo *p_extension_funcs);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClass = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionConstStringNamePtr,
     GDExtensionClassCreationInfo,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClass
+]
 
 ///| 
 /// @name classdb_register_extension_class2
@@ -5613,14 +5613,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClass2)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, GDExtensionConstStringNamePtr p_parent_class_name, const GDExtensionClassCreationInfo2 *p_extension_funcs);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClass2 = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionConstStringNamePtr,
     GDExtensionClassCreationInfo2,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClass2
+]
 
 ///| 
 /// @name classdb_register_extension_class3
@@ -5641,14 +5641,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClass3)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, GDExtensionConstStringNamePtr p_parent_class_name, const GDExtensionClassCreationInfo3 *p_extension_funcs);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClass3 = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionConstStringNamePtr,
     GDExtensionClassCreationInfo3,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClass3
+]
 
 ///|
 /// @name classdb_register_extension_class4
@@ -5668,14 +5668,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClass4)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, GDExtensionConstStringNamePtr p_parent_class_name, const GDExtensionClassCreationInfo4 *p_extension_funcs);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClass4 = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionConstStringNamePtr,
     GDExtensionClassCreationInfo4,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClass4
+]
 
 ///| 
 /// @name classdb_register_extension_class_method
@@ -5694,13 +5694,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClassMethod)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, const GDExtensionClassMethodInfo *p_method_info);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClassMethod = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionClassMethodInfo,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClassMethod
+]
 
 ///| 
 /// @name classdb_register_extension_class_virtual_method
@@ -5719,13 +5719,13 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, const GDExtensionClassVirtualMethodInfo *p_method_info);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionClassVirtualMethodInfo,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod
+]
 
 ///| 
 /// @name classdb_register_extension_class_integer_constant
@@ -5749,7 +5749,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, GDExtensionConstStringNamePtr p_enum_name, GDExtensionConstStringNamePtr p_constant_name, GDExtensionInt p_constant_value, GDExtensionBool p_is_bitfield);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
@@ -5758,7 +5758,7 @@ pub typealias FuncRef[
     GDExtensionInt,
     GDExtensionBool,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
+]
 
 ///| 
 /// @name classdb_register_extension_class_property
@@ -5779,7 +5779,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClassProperty)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, const GDExtensionPropertyInfo *p_info, GDExtensionConstStringNamePtr p_setter, GDExtensionConstStringNamePtr p_getter);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClassProperty = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
@@ -5787,7 +5787,7 @@ pub typealias FuncRef[
     GDExtensionConstStringNamePtr,
     GDExtensionConstStringNamePtr,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClassProperty
+]
 
 ///| 
 /// @name classdb_register_extension_class_property_indexed
@@ -5809,7 +5809,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, const GDExtensionPropertyInfo *p_info, GDExtensionConstStringNamePtr p_setter, GDExtensionConstStringNamePtr p_getter, GDExtensionInt p_index);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
@@ -5818,7 +5818,7 @@ pub typealias FuncRef[
     GDExtensionConstStringNamePtr,
     GDExtensionInt,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed
+]
 
 ///| 
 /// @name classdb_register_extension_class_property_group
@@ -5836,14 +5836,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, GDExtensionConstStringPtr p_group_name, GDExtensionConstStringPtr p_prefix);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionConstStringPtr,
     GDExtensionConstStringPtr,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup
+]
 
 ///| 
 /// @name classdb_register_extension_class_property_subgroup
@@ -5861,14 +5861,14 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, GDExtensionConstStringPtr p_subgroup_name, GDExtensionConstStringPtr p_prefix);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
     GDExtensionConstStringPtr,
     GDExtensionConstStringPtr,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup
+]
 
 ///| 
 /// @name classdb_register_extension_class_signal
@@ -5889,7 +5889,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbRegisterExtensionClassSignal)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name, GDExtensionConstStringNamePtr p_signal_name, const GDExtensionPropertyInfo *p_argument_info, GDExtensionInt p_argument_count);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbRegisterExtensionClassSignal = FuncRef[
   (
     GDExtensionClassLibraryPtr,
     GDExtensionConstStringNamePtr,
@@ -5897,7 +5897,7 @@ pub typealias FuncRef[
     GDExtensionPropertyInfo,
     GDExtensionInt,
   ) -> Unit,
-] as GDExtensionInterfaceClassdbRegisterExtensionClassSignal
+]
 
 ///| 
 /// 
@@ -5914,9 +5914,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceClassdbUnregisterExtensionClass)(GDExtensionClassLibraryPtr p_library, GDExtensionConstStringNamePtr p_class_name); /* Unregistering a parent class before a class that inherits it will result in failure. Inheritors must be unregistered first. */
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceClassdbUnregisterExtensionClass = FuncRef[
   (GDExtensionClassLibraryPtr, GDExtensionConstStringNamePtr) -> Unit,
-] as GDExtensionInterfaceClassdbUnregisterExtensionClass
+]
 
 ///| 
 /// 
@@ -5933,9 +5933,9 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceGetLibraryPath)(GDExtensionClassLibraryPtr p_library, GDExtensionUninitializedStringPtr r_path);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceGetLibraryPath = FuncRef[
   (GDExtensionClassLibraryPtr, GDExtensionUninitializedStringPtr) -> Unit,
-] as GDExtensionInterfaceGetLibraryPath
+]
 
 ///| 
 /// @name editor_add_plugin
@@ -5952,7 +5952,7 @@ pub typealias FuncRef[
 /// ```c
 /// typedef void (*GDExtensionInterfaceEditorAddPlugin)(GDExtensionConstStringNamePtr p_class_name);
 /// ```
-pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> Unit] as GDExtensionInterfaceEditorAddPlugin
+pub type GDExtensionInterfaceEditorAddPlugin = FuncRef[(GDExtensionConstStringNamePtr) -> Unit]
 
 ///| 
 /// @name editor_remove_plugin
@@ -5967,7 +5967,7 @@ pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> Unit] as GDExtensionInt
 /// ```c
 /// typedef void (*GDExtensionInterfaceEditorRemovePlugin)(GDExtensionConstStringNamePtr p_class_name);
 /// ```
-pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> Unit] as GDExtensionInterfaceEditorRemovePlugin
+pub type GDExtensionInterfaceEditorRemovePlugin = FuncRef[(GDExtensionConstStringNamePtr) -> Unit]
 
 ///| 
 /// @name editor_help_load_xml_from_utf8_chars
@@ -5984,7 +5984,7 @@ pub typealias FuncRef[(GDExtensionConstStringNamePtr) -> Unit] as GDExtensionInt
 /// ```c
 /// typedef void (*GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars)(const char *p_data);
 /// ```
-pub typealias FuncRef[(String) -> Unit] as GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars
+pub type GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars = FuncRef[(String) -> Unit]
 
 ///| 
 /// @name editor_help_load_xml_from_utf8_chars_and_len
@@ -6002,7 +6002,7 @@ pub typealias FuncRef[(String) -> Unit] as GDExtensionsInterfaceEditorHelpLoadXm
 /// ```c
 /// typedef void (*GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen)(const char *p_data, GDExtensionInt p_size);
 /// ```
-pub typealias FuncRef[(String, GDExtensionInt) -> Unit] as GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen
+pub type GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen = FuncRef[(String, GDExtensionInt) -> Unit]
 
 ///|
 ///
@@ -6024,6 +6024,6 @@ pub typealias FuncRef[(String, GDExtensionInt) -> Unit] as GDExtensionsInterface
 /// ```c
 /// typedef void (*GDExtensionInterfaceEditorRegisterGetClassesUsedCallback)(GDExtensionClassLibraryPtr p_library, GDExtensionEditorGetClassesUsedCallback p_callback);
 /// ```
-pub typealias FuncRef[
+pub type GDExtensionInterfaceEditorRegisterGetClassesUsedCallback = FuncRef[
   (GDExtensionClassLibraryPtr, GDExtensionEditorGetClassesUsedCallback) -> Unit,
-] as GDExtensionInterfaceEditorRegisterGetClassesUsedCallback
+]
