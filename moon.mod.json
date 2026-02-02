@@ -2,7 +2,7 @@
   "name": "Kaida-Amethyst/godot",
   "version": "0.1.0",
   "readme": "README.md",
-  "repository": "",
+  "repository": "https://github.com/moonbit-community/godot.mbt",
   "license": "Apache-2.0",
   "keywords": ["Godot", "Game Engine"],
   "description": "Moonbit language binding for Godot Game Engine",
