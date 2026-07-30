@@ -1,11 +1,20 @@
-# Kaida-Amethyst/godot
+# GDExtension header and API
 
-moonbit语言的godot绑定，允许开发者使用moonbit语言搭配godot引擎开发游戏。
+This repository contains the C header and API JSON for
+[**Godot Engine**](https://github.com/godotengine/godot)'s *GDExtensions* API.
 
-GDExtension到Moonbit类型的映射已经完成，但进一步的抽象需要moonbit语言特性，工具链和构建系统的进一步支持，因此当前项目的开发处于暂停状态。
+## Updating header and API
 
-## RoadMap
+If the current branch is not up-to-date for your needs, or if you want to sync
+the header and API JSON with your own modified version of Godot, here is the
+update procedure used to sync this repository with upstream releases:
 
-[x] gdextension binding.
+- Compile [Godot Engine](https://github.com/godotengine/godot) at the specific
+  version/commit which you are using.
+  * Or if you use an official release, download that version of the Godot editor.
+- Use the compiled or downloaded executable to generate the `extension_api.json`
+  and `gdextension_interface.h` files with:
 
-[ ] godot 抽象
+```
+godot --dump-extension-api --dump-gdextension-interface
+```
