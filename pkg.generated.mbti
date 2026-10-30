@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "Kaida-Amethyst/godot/gdext"
+package "Kaida-Amethyst/godot"
 
 import {
   "moonbitlang/core/ref",
@@ -33,7 +33,7 @@ pub(all) struct GDExtensionCallableCustomInfo {
   call_func : FuncRef[(VoidPtr, GDExtensionConstVariantPtr, Int64, GDExtensionVariantPtr, GDExtensionCallError) -> Unit]
   is_valid_func : FuncRef[(VoidPtr) -> Byte]
   free_func : FuncRef[(VoidPtr) -> Unit]
-  hash_func : FuncRef[(VoidPtr) -> UInt]
+  hash_func : FuncRef[(VoidPtr) -> UInt32]
   equal_func : FuncRef[(VoidPtr, VoidPtr) -> Byte]
   less_than_func : FuncRef[(VoidPtr, VoidPtr) -> Byte]
   to_string_func : FuncRef[(VoidPtr, Byte, GDExtensionStringPtr) -> Unit]
@@ -46,7 +46,7 @@ pub(all) struct GDExtensionCallableCustomInfo2 {
   call_func : FuncRef[(VoidPtr, GDExtensionConstVariantPtr, Int64, GDExtensionVariantPtr, GDExtensionCallError) -> Unit]
   is_valid_func : FuncRef[(VoidPtr) -> Byte]
   free_func : FuncRef[(VoidPtr) -> Unit]
-  hash_func : FuncRef[(VoidPtr) -> UInt]
+  hash_func : FuncRef[(VoidPtr) -> UInt32]
   equal_func : FuncRef[(VoidPtr, VoidPtr) -> Byte]
   less_than_func : FuncRef[(VoidPtr, VoidPtr) -> Byte]
   to_string_func : FuncRef[(VoidPtr, Byte, GDExtensionStringPtr) -> Unit]
@@ -58,11 +58,11 @@ pub(all) struct GDExtensionClassCreationInfo {
   is_abstract : Byte
   set_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr) -> Byte]
   get_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
-  get_property_list_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[UInt]) -> GDExtensionPropertyInfoCRef]
+  get_property_list_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[UInt32]) -> GDExtensionPropertyInfoCRef]
   free_property_list_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionPropertyInfo) -> Unit]
   property_can_revert_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr) -> Byte]
   property_get_revert_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
-  notification_func : FuncRef[(GDExtensionClassInstancePtr, Int) -> Unit]
+  notification_func : FuncRef[(GDExtensionClassInstancePtr, Int32) -> Unit]
   to_string_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[Byte], GDExtensionStringPtr) -> Unit]
   reference_func : FuncRef[(GDExtensionClassInstancePtr) -> Unit]
   unreference_func : FuncRef[(GDExtensionClassInstancePtr) -> Unit]
@@ -79,12 +79,12 @@ pub(all) struct GDExtensionClassCreationInfo2 {
   is_exposed : Byte
   set_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr) -> Byte]
   get_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
-  get_property_list_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[UInt]) -> GDExtensionPropertyInfoCRef]
+  get_property_list_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[UInt32]) -> GDExtensionPropertyInfoCRef]
   free_property_list_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionPropertyInfo) -> Unit]
   property_can_revert_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr) -> Byte]
   property_get_revert_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
   validate_property_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[GDExtensionPropertyInfo]) -> Byte]
-  notification_func : FuncRef[(GDExtensionClassInstancePtr, Int, Byte) -> Unit]
+  notification_func : FuncRef[(GDExtensionClassInstancePtr, Int32, Byte) -> Unit]
   to_string_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[Byte], GDExtensionStringPtr) -> Unit]
   reference_func : FuncRef[(GDExtensionClassInstancePtr) -> Unit]
   unreference_func : FuncRef[(GDExtensionClassInstancePtr) -> Unit]
@@ -105,12 +105,12 @@ pub(all) struct GDExtensionClassCreationInfo3 {
   is_runtime : Byte
   set_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr) -> Byte]
   get_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
-  get_property_list_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[UInt]) -> GDExtensionPropertyInfoCRef]
-  free_property_list_func : FuncRef[(GDExtensionClassInstancePtr, FixedArray[GDExtensionPropertyInfo], UInt) -> Unit]
+  get_property_list_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[UInt32]) -> GDExtensionPropertyInfoCRef]
+  free_property_list_func : FuncRef[(GDExtensionClassInstancePtr, FixedArray[GDExtensionPropertyInfo], UInt32) -> Unit]
   property_can_revert_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr) -> Byte]
   property_get_revert_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
   validate_property_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[GDExtensionPropertyInfo]) -> Byte]
-  notification_func : FuncRef[(GDExtensionClassInstancePtr, Int, Byte) -> Unit]
+  notification_func : FuncRef[(GDExtensionClassInstancePtr, Int32, Byte) -> Unit]
   to_string_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[Byte], GDExtensionStringPtr) -> Unit]
   reference_func : FuncRef[(GDExtensionClassInstancePtr) -> Unit]
   unreference_func : FuncRef[(GDExtensionClassInstancePtr) -> Unit]
@@ -132,20 +132,20 @@ pub(all) struct GDExtensionClassCreationInfo4 {
   icon_path : GDExtensionConstStringPtr
   set_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr) -> Byte]
   get_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
-  get_property_list_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[UInt]) -> GDExtensionPropertyInfoCRef]
-  free_property_list_func : FuncRef[(GDExtensionClassInstancePtr, FixedArray[GDExtensionPropertyInfo], UInt) -> Unit]
+  get_property_list_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[UInt32]) -> GDExtensionPropertyInfoCRef]
+  free_property_list_func : FuncRef[(GDExtensionClassInstancePtr, FixedArray[GDExtensionPropertyInfo], UInt32) -> Unit]
   property_can_revert_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr) -> Byte]
   property_get_revert_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
   validate_property_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[GDExtensionPropertyInfo]) -> Byte]
-  notification_func : FuncRef[(GDExtensionClassInstancePtr, Int, Byte) -> Unit]
+  notification_func : FuncRef[(GDExtensionClassInstancePtr, Int32, Byte) -> Unit]
   to_string_func : FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[Byte], GDExtensionStringPtr) -> Unit]
   reference_func : FuncRef[(GDExtensionClassInstancePtr) -> Unit]
   unreference_func : FuncRef[(GDExtensionClassInstancePtr) -> Unit]
   create_instance_func : FuncRef[(VoidPtr, Byte) -> GDExtensionObjectPtr]
   free_instance_func : FuncRef[(VoidPtr, GDExtensionClassInstancePtr) -> Unit]
   recreate_instance_func : FuncRef[(VoidPtr, GDExtensionObjectPtr) -> GDExtensionClassInstancePtr]
-  get_virtual_func : FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt) -> FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[GDExtensionConstTypePtr], GDExtensionTypePtr) -> Unit]]
-  get_virtual_call_data_func : FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt) -> VoidPtr]
+  get_virtual_func : FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt32) -> FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[GDExtensionConstTypePtr], GDExtensionTypePtr) -> Unit]]
+  get_virtual_call_data_func : FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt32) -> VoidPtr]
   call_virtual_with_data_func : FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, VoidPtr, GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit]
   class_userdata : VoidPtr
 }
@@ -184,25 +184,25 @@ pub(all) enum GDExtensionClassMethodFlags {
 pub(all) struct GDExtensionClassMethodInfo {
   name : GDExtensionStringNamePtr
   method_userdata : VoidPtr
-  call_func : FuncRef[(VoidPtr, GDExtensionClassInstancePtr, GDExtensionConstVariantPtr, Int, GDExtensionVariantPtr, GDExtensionCallError) -> Unit]
+  call_func : FuncRef[(VoidPtr, GDExtensionClassInstancePtr, GDExtensionConstVariantPtr, Int32, GDExtensionVariantPtr, GDExtensionCallError) -> Unit]
   ptrcall_func : FuncRef[(VoidPtr, GDExtensionClassInstancePtr, GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit]
-  method_flags : UInt
+  method_flags : UInt32
   has_return_value : Byte
   return_value_info : GDExtensionPropertyInfo
   return_value_metadata : GDExtensionClassMethodArgumentMetadata
-  argument_count : UInt
+  argument_count : UInt32
   arguments_info : GDExtensionPropertyInfo
   arguments_metadata : GDExtensionClassMethodArgumentMetadata
-  default_argument_count : UInt
+  default_argument_count : UInt32
   default_arguments : GDExtensionVariantPtr
 }
 
 pub(all) struct GDExtensionClassVirtualMethodInfo {
   name : GDExtensionStringNamePtr
-  method_flags : UInt
+  method_flags : UInt32
   return_value : GDExtensionPropertyInfo
   return_value_metadata : GDExtensionClassMethodArgumentMetadata
-  argument_count : UInt
+  argument_count : UInt32
   arguments : GDExtensionPropertyInfo
   arguments_metadata : GDExtensionClassMethodArgumentMetadata
 }
@@ -226,9 +226,9 @@ pub type GDExtensionConstTypePtr
 pub type GDExtensionConstVariantPtr
 
 pub(all) struct GDExtensionGodotVersion {
-  major : UInt
-  minor : UInt
-  patch : UInt
+  major : UInt32
+  minor : UInt32
+  patch : UInt32
   string : Bytes
 }
 
@@ -259,11 +259,11 @@ pub type GDExtensionMethodBindPtr
 pub(all) struct GDExtensionMethodInfo {
   name : GDExtensionStringNamePtr
   return_value : GDExtensionPropertyInfo
-  flags : UInt
+  flags : UInt32
   id : Int64
-  argument_count : UInt
+  argument_count : UInt32
   arguments : FixedArray[GDExtensionPropertyInfo]
-  default_argument_count : UInt
+  default_argument_count : UInt32
   default_arguments : FixedArray[GDExtensionVariantPtr]
 }
 
@@ -274,9 +274,9 @@ pub(all) struct GDExtensionPropertyInfo {
   type_ : GDExtensionVariantType
   name : GDExtensionStringNamePtr
   class_name : GDExtensionStringNamePtr
-  hint : UInt
+  hint : UInt32
   hint_string : GDExtensionStringPtr
-  usage : UInt
+  usage : UInt32
 }
 
 #external
@@ -291,18 +291,18 @@ pub type GDExtensionScriptInstanceDataPtr
 pub(all) struct GDExtensionScriptInstanceInfo {
   set_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr) -> Byte]
   get_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
-  get_property_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionPropertyInfo]
+  get_property_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt32) -> GDExtensionPropertyInfo]
   free_property_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> Unit]
   property_can_revert_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr) -> Byte]
   property_get_revert_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
   get_owner_func : FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionObjectPtr]
   get_property_state_func : FuncRef[(GDExtensionScriptInstanceDataPtr, FuncRef[(GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr, VoidPtr) -> Unit], VoidPtr) -> Unit]
-  get_method_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionMethodInfo]
+  get_method_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt32) -> GDExtensionMethodInfo]
   free_method_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo) -> Unit]
   get_property_type_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, Byte) -> GDExtensionVariantType]
   has_method_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr) -> Byte]
   call_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr, Int64, GDExtensionVariantPtr, GDExtensionCallError) -> Unit]
-  notification_func : FuncRef[(GDExtensionScriptInstanceDataPtr, Int) -> Unit]
+  notification_func : FuncRef[(GDExtensionScriptInstanceDataPtr, Int32) -> Unit]
   to_string_func : FuncRef[(GDExtensionScriptInstanceDataPtr, Byte, GDExtensionStringPtr) -> Unit]
   refcount_incremented_func : FuncRef[(GDExtensionScriptInstanceDataPtr) -> Unit]
   refcount_decremented_func : FuncRef[(GDExtensionScriptInstanceDataPtr) -> Byte]
@@ -317,20 +317,20 @@ pub(all) struct GDExtensionScriptInstanceInfo {
 pub(all) struct GDExtensionScriptInstanceInfo2 {
   set_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr) -> Byte]
   get_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
-  get_property_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionPropertyInfo]
+  get_property_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt32) -> GDExtensionPropertyInfo]
   free_property_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> Unit]
   get_class_category_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> Byte]
   property_can_revert_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr) -> Byte]
   property_get_revert_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
   get_owner_func : FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionObjectPtr]
   get_property_state_func : FuncRef[(GDExtensionScriptInstanceDataPtr, FuncRef[(GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr, VoidPtr) -> Unit], VoidPtr) -> Unit]
-  get_method_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionMethodInfo]
+  get_method_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt32) -> GDExtensionMethodInfo]
   free_method_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo) -> Unit]
   get_property_type_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, Byte) -> GDExtensionVariantType]
   validate_property_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> Byte]
   has_method_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr) -> Byte]
   call_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr, Int64, GDExtensionVariantPtr, GDExtensionCallError) -> Unit]
-  notification_func : FuncRef[(GDExtensionScriptInstanceDataPtr, Int, Byte) -> Unit]
+  notification_func : FuncRef[(GDExtensionScriptInstanceDataPtr, Int32, Byte) -> Unit]
   to_string_func : FuncRef[(GDExtensionScriptInstanceDataPtr, Byte, GDExtensionStringPtr) -> Unit]
   refcount_incremented_func : FuncRef[(GDExtensionScriptInstanceDataPtr) -> Unit]
   refcount_decremented_func : FuncRef[(GDExtensionScriptInstanceDataPtr) -> Byte]
@@ -345,21 +345,21 @@ pub(all) struct GDExtensionScriptInstanceInfo2 {
 pub(all) struct GDExtensionScriptInstanceInfo3 {
   set_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr) -> Byte]
   get_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
-  get_property_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionPropertyInfo]
-  free_property_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo, UInt) -> Unit]
+  get_property_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt32) -> GDExtensionPropertyInfo]
+  free_property_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo, UInt32) -> Unit]
   get_class_category_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> Byte]
   property_can_revert_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr) -> Byte]
   property_get_revert_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
   get_owner_func : FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionObjectPtr]
   get_property_state_func : FuncRef[(GDExtensionScriptInstanceDataPtr, FuncRef[(GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr, VoidPtr) -> Unit], VoidPtr) -> Unit]
-  get_method_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionMethodInfo]
-  free_method_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo, UInt) -> Unit]
+  get_method_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, UInt32) -> GDExtensionMethodInfo]
+  free_method_list_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo, UInt32) -> Unit]
   get_property_type_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, Byte) -> GDExtensionVariantType]
   validate_property_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> Byte]
   has_method_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr) -> Byte]
   get_method_argument_count_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, Byte) -> Int64]
   call_func : FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr, Int64, GDExtensionVariantPtr, GDExtensionCallError) -> Unit]
-  notification_func : FuncRef[(GDExtensionScriptInstanceDataPtr, Int, Byte) -> Unit]
+  notification_func : FuncRef[(GDExtensionScriptInstanceDataPtr, Int32, Byte) -> Unit]
   to_string_func : FuncRef[(GDExtensionScriptInstanceDataPtr, Byte, GDExtensionStringPtr) -> Unit]
   refcount_incremented_func : FuncRef[(GDExtensionScriptInstanceDataPtr) -> Unit]
   refcount_decremented_func : FuncRef[(GDExtensionScriptInstanceDataPtr) -> Byte]
@@ -482,7 +482,7 @@ pub type VoidPtr
 // Type aliases
 pub type Char16 = UInt16
 
-pub type Char32 = UInt
+pub type Char32 = UInt32
 
 pub type GDExtensionBool = Byte
 
@@ -494,7 +494,7 @@ pub type GDExtensionCallableCustomFree = FuncRef[(VoidPtr) -> Unit]
 
 pub type GDExtensionCallableCustomGetArgumentCount = FuncRef[(VoidPtr, Byte) -> Int64]
 
-pub type GDExtensionCallableCustomHash = FuncRef[(VoidPtr) -> UInt]
+pub type GDExtensionCallableCustomHash = FuncRef[(VoidPtr) -> UInt32]
 
 pub type GDExtensionCallableCustomIsValid = FuncRef[(VoidPtr) -> Byte]
 
@@ -516,31 +516,31 @@ pub type GDExtensionClassFreeInstance = FuncRef[(VoidPtr, GDExtensionClassInstan
 
 pub type GDExtensionClassFreePropertyList = FuncRef[(GDExtensionClassInstancePtr, GDExtensionPropertyInfo) -> Unit]
 
-pub type GDExtensionClassFreePropertyList2 = FuncRef[(GDExtensionClassInstancePtr, FixedArray[GDExtensionPropertyInfo], UInt) -> Unit]
+pub type GDExtensionClassFreePropertyList2 = FuncRef[(GDExtensionClassInstancePtr, FixedArray[GDExtensionPropertyInfo], UInt32) -> Unit]
 
 pub type GDExtensionClassGet = FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
 
-pub type GDExtensionClassGetPropertyList = FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[UInt]) -> GDExtensionPropertyInfoCRef]
+pub type GDExtensionClassGetPropertyList = FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[UInt32]) -> GDExtensionPropertyInfoCRef]
 
 pub type GDExtensionClassGetRID = FuncRef[(GDExtensionClassInstancePtr) -> UInt64]
 
 pub type GDExtensionClassGetVirtual = FuncRef[(VoidPtr, GDExtensionConstStringNamePtr) -> FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[GDExtensionConstTypePtr], GDExtensionTypePtr) -> Unit]]
 
-pub type GDExtensionClassGetVirtual2 = FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt) -> FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[GDExtensionConstTypePtr], GDExtensionTypePtr) -> Unit]]
+pub type GDExtensionClassGetVirtual2 = FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt32) -> FuncRef[(GDExtensionClassInstancePtr, @ref.Ref[GDExtensionConstTypePtr], GDExtensionTypePtr) -> Unit]]
 
 pub type GDExtensionClassGetVirtualCallData = FuncRef[(VoidPtr, GDExtensionConstStringNamePtr) -> VoidPtr]
 
-pub type GDExtensionClassGetVirtualCallData2 = FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt) -> VoidPtr]
+pub type GDExtensionClassGetVirtualCallData2 = FuncRef[(VoidPtr, GDExtensionConstStringNamePtr, UInt32) -> VoidPtr]
 
-pub type GDExtensionClassMethodCall = FuncRef[(VoidPtr, GDExtensionClassInstancePtr, GDExtensionConstVariantPtr, Int, GDExtensionVariantPtr, GDExtensionCallError) -> Unit]
+pub type GDExtensionClassMethodCall = FuncRef[(VoidPtr, GDExtensionClassInstancePtr, GDExtensionConstVariantPtr, Int32, GDExtensionVariantPtr, GDExtensionCallError) -> Unit]
 
 pub type GDExtensionClassMethodPtrCall = FuncRef[(VoidPtr, GDExtensionClassInstancePtr, GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit]
 
 pub type GDExtensionClassMethodValidatedCall = FuncRef[(VoidPtr, GDExtensionClassInstancePtr, GDExtensionConstVariantPtr, GDExtensionVariantPtr) -> Unit]
 
-pub type GDExtensionClassNotification = FuncRef[(GDExtensionClassInstancePtr, Int) -> Unit]
+pub type GDExtensionClassNotification = FuncRef[(GDExtensionClassInstancePtr, Int32) -> Unit]
 
-pub type GDExtensionClassNotification2 = FuncRef[(GDExtensionClassInstancePtr, Int, Byte) -> Unit]
+pub type GDExtensionClassNotification2 = FuncRef[(GDExtensionClassInstancePtr, Int32, Byte) -> Unit]
 
 pub type GDExtensionClassPropertyCanRevert = FuncRef[(GDExtensionClassInstancePtr, GDExtensionConstStringNamePtr) -> Byte]
 
@@ -656,11 +656,11 @@ pub type GDExtensionInterfaceImagePtr = FuncRef[(GDExtensionObjectPtr) -> Bytes]
 
 pub type GDExtensionInterfaceImagePtrw = FuncRef[(GDExtensionObjectPtr) -> Bytes]
 
-pub type GDExtensionInterfaceMemAlloc = FuncRef[(UInt) -> VoidPtr]
+pub type GDExtensionInterfaceMemAlloc = FuncRef[(UInt32) -> VoidPtr]
 
 pub type GDExtensionInterfaceMemFree = FuncRef[(VoidPtr) -> Unit]
 
-pub type GDExtensionInterfaceMemRealloc = FuncRef[(VoidPtr, UInt) -> VoidPtr]
+pub type GDExtensionInterfaceMemRealloc = FuncRef[(VoidPtr, UInt32) -> VoidPtr]
 
 pub type GDExtensionInterfaceObjectCallScriptMethod = FuncRef[(GDExtensionObjectPtr, GDExtensionConstStringNamePtr, FixedArray[GDExtensionConstVariantPtr], Int64, GDExtensionUninitializedVariantPtr, GDExtensionCallError) -> Unit]
 
@@ -706,9 +706,9 @@ pub type GDExtensionInterfacePackedFloat64ArrayOperatorIndex = FuncRef[(GDExtens
 
 pub type GDExtensionInterfacePackedFloat64ArrayOperatorIndexConst = FuncRef[(GDExtensionConstTypePtr, Int64) -> Double]
 
-pub type GDExtensionInterfacePackedInt32ArrayOperatorIndex = FuncRef[(GDExtensionTypePtr, Int64) -> Int]
+pub type GDExtensionInterfacePackedInt32ArrayOperatorIndex = FuncRef[(GDExtensionTypePtr, Int64) -> Int32]
 
-pub type GDExtensionInterfacePackedInt32ArrayOperatorIndexConst = FuncRef[(GDExtensionConstTypePtr, Int64) -> Int]
+pub type GDExtensionInterfacePackedInt32ArrayOperatorIndexConst = FuncRef[(GDExtensionConstTypePtr, Int64) -> Int32]
 
 pub type GDExtensionInterfacePackedInt64ArrayOperatorIndex = FuncRef[(GDExtensionTypePtr, Int64) -> Int64]
 
@@ -734,17 +734,17 @@ pub type GDExtensionInterfacePlaceHolderScriptInstanceCreate = FuncRef[(GDExtens
 
 pub type GDExtensionInterfacePlaceHolderScriptInstanceUpdate = FuncRef[(GDExtensionScriptInstancePtr, GDExtensionConstTypePtr, GDExtensionConstTypePtr) -> Unit]
 
-pub type GDExtensionInterfacePrintError = FuncRef[(Bytes, Bytes, Bytes, Int, Byte) -> Unit]
+pub type GDExtensionInterfacePrintError = FuncRef[(Bytes, Bytes, Bytes, Int32, Byte) -> Unit]
 
-pub type GDExtensionInterfacePrintErrorWithMessage = FuncRef[(Bytes, Bytes, Bytes, Bytes, Int, Byte) -> Unit]
+pub type GDExtensionInterfacePrintErrorWithMessage = FuncRef[(Bytes, Bytes, Bytes, Bytes, Int32, Byte) -> Unit]
 
-pub type GDExtensionInterfacePrintScriptError = FuncRef[(Bytes, Bytes, Bytes, Bytes, Int, Byte) -> Unit]
+pub type GDExtensionInterfacePrintScriptError = FuncRef[(Bytes, Bytes, Bytes, Bytes, Int32, Byte) -> Unit]
 
-pub type GDExtensionInterfacePrintScriptErrorWithMessage = FuncRef[(Bytes, Bytes, Bytes, Bytes, Int, Byte) -> Unit]
+pub type GDExtensionInterfacePrintScriptErrorWithMessage = FuncRef[(Bytes, Bytes, Bytes, Bytes, Int32, Byte) -> Unit]
 
-pub type GDExtensionInterfacePrintWarning = FuncRef[(Bytes, Bytes, Bytes, Int, Byte) -> Unit]
+pub type GDExtensionInterfacePrintWarning = FuncRef[(Bytes, Bytes, Bytes, Int32, Byte) -> Unit]
 
-pub type GDExtensionInterfacePrintWarningWithMessage = FuncRef[(Bytes, Bytes, Bytes, Bytes, Int, Byte) -> Unit]
+pub type GDExtensionInterfacePrintWarningWithMessage = FuncRef[(Bytes, Bytes, Bytes, Bytes, Int32, Byte) -> Unit]
 
 pub type GDExtensionInterfaceRefGetObject = FuncRef[(GDExtensionConstRefPtr) -> GDExtensionObjectPtr]
 
@@ -812,15 +812,15 @@ pub type GDExtensionInterfaceStringToWideChars = FuncRef[(GDExtensionConstString
 
 pub type GDExtensionInterfaceVariantBooleanize = FuncRef[(GDExtensionConstVariantPtr) -> Byte]
 
-pub type GDExtensionInterfaceVariantCall = FuncRef[(GDExtensionVariantPtr, GDExtensionConstStringNamePtr, FixedArray[GDExtensionConstVariantPtr], Int, GDExtensionUninitializedVariantPtr, GDExtensionCallError) -> Unit]
+pub type GDExtensionInterfaceVariantCall = FuncRef[(GDExtensionVariantPtr, GDExtensionConstStringNamePtr, FixedArray[GDExtensionConstVariantPtr], Int32, GDExtensionUninitializedVariantPtr, GDExtensionCallError) -> Unit]
 
-pub type GDExtensionInterfaceVariantCallStatic = FuncRef[(GDExtensionVariantType, GDExtensionConstStringNamePtr, FixedArray[GDExtensionConstVariantPtr], Int, GDExtensionUninitializedVariantPtr, GDExtensionCallError) -> Unit]
+pub type GDExtensionInterfaceVariantCallStatic = FuncRef[(GDExtensionVariantType, GDExtensionConstStringNamePtr, FixedArray[GDExtensionConstVariantPtr], Int32, GDExtensionUninitializedVariantPtr, GDExtensionCallError) -> Unit]
 
 pub type GDExtensionInterfaceVariantCanConvert = FuncRef[(GDExtensionVariantType, GDExtensionVariantType) -> Byte]
 
 pub type GDExtensionInterfaceVariantCanConvertStrict = FuncRef[(GDExtensionVariantType, GDExtensionVariantType) -> Byte]
 
-pub type GDExtensionInterfaceVariantConstruct = FuncRef[(GDExtensionVariantType, GDExtensionUninitializedVariantPtr, FixedArray[GDExtensionConstVariantPtr], Int, GDExtensionCallError) -> Unit]
+pub type GDExtensionInterfaceVariantConstruct = FuncRef[(GDExtensionVariantType, GDExtensionUninitializedVariantPtr, FixedArray[GDExtensionConstVariantPtr], Int32, GDExtensionCallError) -> Unit]
 
 pub type GDExtensionInterfaceVariantDestroy = FuncRef[(GDExtensionVariantPtr) -> Unit]
 
@@ -840,9 +840,9 @@ pub type GDExtensionInterfaceVariantGetNamed = FuncRef[(GDExtensionConstVariantP
 
 pub type GDExtensionInterfaceVariantGetObjectInstanceId = FuncRef[(GDExtensionConstVariantPtr) -> UInt64]
 
-pub type GDExtensionInterfaceVariantGetPtrBuiltinMethod = FuncRef[(GDExtensionVariantType, GDExtensionConstStringNamePtr, Int64) -> FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr, FixedArray[GDExtensionTypePtr], Int) -> Unit]]
+pub type GDExtensionInterfaceVariantGetPtrBuiltinMethod = FuncRef[(GDExtensionVariantType, GDExtensionConstStringNamePtr, Int64) -> FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr, FixedArray[GDExtensionTypePtr], Int32) -> Unit]]
 
-pub type GDExtensionInterfaceVariantGetPtrConstructor = FuncRef[(GDExtensionVariantType, Int) -> FuncRef[(GDExtensionUninitializedTypePtr, @ref.Ref[GDExtensionConstTypePtr]) -> Unit]]
+pub type GDExtensionInterfaceVariantGetPtrConstructor = FuncRef[(GDExtensionVariantType, Int32) -> FuncRef[(GDExtensionUninitializedTypePtr, @ref.Ref[GDExtensionConstTypePtr]) -> Unit]]
 
 pub type GDExtensionInterfaceVariantGetPtrDestructor = FuncRef[(GDExtensionVariantType) -> FuncRef[(GDExtensionTypePtr) -> Unit]]
 
@@ -852,7 +852,7 @@ pub type GDExtensionInterfaceVariantGetPtrIndexedGetter = FuncRef[(GDExtensionVa
 
 pub type GDExtensionInterfaceVariantGetPtrIndexedSetter = FuncRef[(GDExtensionVariantType) -> FuncRef[(GDExtensionTypePtr, Int64, GDExtensionConstTypePtr) -> Unit]]
 
-pub type GDExtensionInterfaceVariantGetPtrKeyedChecker = FuncRef[(GDExtensionVariantType) -> FuncRef[(GDExtensionConstVariantPtr, GDExtensionConstVariantPtr) -> UInt]]
+pub type GDExtensionInterfaceVariantGetPtrKeyedChecker = FuncRef[(GDExtensionVariantType) -> FuncRef[(GDExtensionConstVariantPtr, GDExtensionConstVariantPtr) -> UInt32]]
 
 pub type GDExtensionInterfaceVariantGetPtrKeyedGetter = FuncRef[(GDExtensionVariantType) -> FuncRef[(GDExtensionConstTypePtr, GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit]]
 
@@ -862,7 +862,7 @@ pub type GDExtensionInterfaceVariantGetPtrOperatorEvaluator = FuncRef[(GDExtensi
 
 pub type GDExtensionInterfaceVariantGetPtrSetter = FuncRef[(GDExtensionVariantType, GDExtensionConstStringNamePtr) -> FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr) -> Unit]]
 
-pub type GDExtensionInterfaceVariantGetPtrUtilityFunction = FuncRef[(GDExtensionConstStringNamePtr, Int64) -> FuncRef[(GDExtensionTypePtr, FixedArray[GDExtensionConstTypePtr], Int) -> Unit]]
+pub type GDExtensionInterfaceVariantGetPtrUtilityFunction = FuncRef[(GDExtensionConstStringNamePtr, Int64) -> FuncRef[(GDExtensionTypePtr, FixedArray[GDExtensionConstTypePtr], Int32) -> Unit]]
 
 pub type GDExtensionInterfaceVariantGetType = FuncRef[(GDExtensionConstVariantPtr) -> GDExtensionVariantType]
 
@@ -900,13 +900,13 @@ pub type GDExtensionInterfaceVariantSetNamed = FuncRef[(GDExtensionVariantPtr, G
 
 pub type GDExtensionInterfaceVariantStringify = FuncRef[(GDExtensionConstVariantPtr, GDExtensionStringPtr) -> Unit]
 
-pub type GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask = FuncRef[(GDExtensionObjectPtr, FuncRef[(Unit, UInt) -> Unit], VoidPtr, Int, Int, Byte, GDExtensionConstStringPtr) -> Int64]
+pub type GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask = FuncRef[(GDExtensionObjectPtr, FuncRef[(Unit, UInt32) -> Unit], VoidPtr, Int32, Int32, Byte, GDExtensionConstStringPtr) -> Int64]
 
 pub type GDExtensionInterfaceWorkerThreadPoolAddNativeTask = FuncRef[(GDExtensionObjectPtr, FuncRef[() -> Unit], VoidPtr, Byte, GDExtensionConstStringPtr) -> Int64]
 
 pub type GDExtensionInterfaceXmlParserOpenBuffer = FuncRef[(GDExtensionObjectPtr, Bytes, UInt64) -> Int64]
 
-pub type GDExtensionPtrBuiltInMethod = FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr, FixedArray[GDExtensionTypePtr], Int) -> Unit]
+pub type GDExtensionPtrBuiltInMethod = FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr, FixedArray[GDExtensionTypePtr], Int32) -> Unit]
 
 pub type GDExtensionPtrConstructor = FuncRef[(GDExtensionUninitializedTypePtr, @ref.Ref[GDExtensionConstTypePtr]) -> Unit]
 
@@ -918,7 +918,7 @@ pub type GDExtensionPtrIndexedGetter = FuncRef[(GDExtensionConstTypePtr, Int64, 
 
 pub type GDExtensionPtrIndexedSetter = FuncRef[(GDExtensionTypePtr, Int64, GDExtensionConstTypePtr) -> Unit]
 
-pub type GDExtensionPtrKeyedChecker = FuncRef[(GDExtensionConstVariantPtr, GDExtensionConstVariantPtr) -> UInt]
+pub type GDExtensionPtrKeyedChecker = FuncRef[(GDExtensionConstVariantPtr, GDExtensionConstVariantPtr) -> UInt32]
 
 pub type GDExtensionPtrKeyedGetter = FuncRef[(GDExtensionConstTypePtr, GDExtensionConstTypePtr, GDExtensionTypePtr) -> Unit]
 
@@ -928,7 +928,7 @@ pub type GDExtensionPtrOperatorEvaluator = FuncRef[(GDExtensionConstTypePtr, GDE
 
 pub type GDExtensionPtrSetter = FuncRef[(GDExtensionTypePtr, GDExtensionConstTypePtr) -> Unit]
 
-pub type GDExtensionPtrUtilityFunction = FuncRef[(GDExtensionTypePtr, FixedArray[GDExtensionConstTypePtr], Int) -> Unit]
+pub type GDExtensionPtrUtilityFunction = FuncRef[(GDExtensionTypePtr, FixedArray[GDExtensionConstTypePtr], Int32) -> Unit]
 
 pub type GDExtensionScriptInstanceCall = FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr, Int64, GDExtensionVariantPtr, GDExtensionCallError) -> Unit]
 
@@ -936,11 +936,11 @@ pub type GDExtensionScriptInstanceFree = FuncRef[(GDExtensionScriptInstanceDataP
 
 pub type GDExtensionScriptInstanceFreeMethodList = FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo) -> Unit]
 
-pub type GDExtensionScriptInstanceFreeMethodList2 = FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo, UInt) -> Unit]
+pub type GDExtensionScriptInstanceFreeMethodList2 = FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo, UInt32) -> Unit]
 
 pub type GDExtensionScriptInstanceFreePropertyList = FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo) -> Unit]
 
-pub type GDExtensionScriptInstanceFreePropertyList2 = FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo, UInt) -> Unit]
+pub type GDExtensionScriptInstanceFreePropertyList2 = FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo, UInt32) -> Unit]
 
 pub type GDExtensionScriptInstanceGet = FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, GDExtensionVariantPtr) -> Byte]
 
@@ -950,11 +950,11 @@ pub type GDExtensionScriptInstanceGetLanguage = FuncRef[(GDExtensionScriptInstan
 
 pub type GDExtensionScriptInstanceGetMethodArgumentCount = FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr, Byte) -> Int64]
 
-pub type GDExtensionScriptInstanceGetMethodList = FuncRef[(GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionMethodInfo]
+pub type GDExtensionScriptInstanceGetMethodList = FuncRef[(GDExtensionScriptInstanceDataPtr, UInt32) -> GDExtensionMethodInfo]
 
 pub type GDExtensionScriptInstanceGetOwner = FuncRef[(GDExtensionScriptInstanceDataPtr) -> GDExtensionObjectPtr]
 
-pub type GDExtensionScriptInstanceGetPropertyList = FuncRef[(GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionPropertyInfo]
+pub type GDExtensionScriptInstanceGetPropertyList = FuncRef[(GDExtensionScriptInstanceDataPtr, UInt32) -> GDExtensionPropertyInfo]
 
 pub type GDExtensionScriptInstanceGetPropertyState = FuncRef[(GDExtensionScriptInstanceDataPtr, FuncRef[(GDExtensionConstStringNamePtr, GDExtensionConstVariantPtr, VoidPtr) -> Unit], VoidPtr) -> Unit]
 
@@ -966,9 +966,9 @@ pub type GDExtensionScriptInstanceHasMethod = FuncRef[(GDExtensionScriptInstance
 
 pub type GDExtensionScriptInstanceIsPlaceholder = FuncRef[(GDExtensionScriptInstanceDataPtr) -> Byte]
 
-pub type GDExtensionScriptInstanceNotification = FuncRef[(GDExtensionScriptInstanceDataPtr, Int) -> Unit]
+pub type GDExtensionScriptInstanceNotification = FuncRef[(GDExtensionScriptInstanceDataPtr, Int32) -> Unit]
 
-pub type GDExtensionScriptInstanceNotification2 = FuncRef[(GDExtensionScriptInstanceDataPtr, Int, Byte) -> Unit]
+pub type GDExtensionScriptInstanceNotification2 = FuncRef[(GDExtensionScriptInstanceDataPtr, Int32, Byte) -> Unit]
 
 pub type GDExtensionScriptInstancePropertyCanRevert = FuncRef[(GDExtensionScriptInstanceDataPtr, GDExtensionConstStringNamePtr) -> Byte]
 
@@ -999,4 +999,3 @@ pub type GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen = FuncRef[(St
 pub type GDObjectInstanceID = UInt64
 
 // Traits
-

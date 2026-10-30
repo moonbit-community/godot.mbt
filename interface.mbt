@@ -36,7 +36,7 @@ pub type VoidPtr
 // typedef uint16_t char16_t;
 
 ///|
-pub type Char32 = UInt
+pub type Char32 = UInt32
 
 ///|
 pub type Char16 = UInt16
@@ -555,7 +555,7 @@ pub type GDExtensionPtrBuiltInMethod = FuncRef[
     GDExtensionTypePtr,
     GDExtensionConstTypePtr,
     FixedArray[GDExtensionTypePtr],
-    Int,
+    Int32,
   ) -> Unit,
 ]
 
@@ -653,7 +653,7 @@ pub type GDExtensionPtrKeyedGetter = FuncRef[
 /// typedef uint32_t (*GDExtensionPtrKeyedChecker)(GDExtensionConstVariantPtr p_base, GDExtensionConstVariantPtr p_key);
 /// ```
 pub type GDExtensionPtrKeyedChecker = FuncRef[
-  (GDExtensionConstVariantPtr, GDExtensionConstVariantPtr) -> UInt,
+  (GDExtensionConstVariantPtr, GDExtensionConstVariantPtr) -> UInt32,
 ]
 
 ///|
@@ -664,7 +664,7 @@ pub type GDExtensionPtrKeyedChecker = FuncRef[
 /// typedef void (*GDExtensionPtrUtilityFunction)(GDExtensionTypePtr r_return, const GDExtensionConstTypePtr *p_args, int p_argument_count);
 /// ```
 pub type GDExtensionPtrUtilityFunction = FuncRef[
-  (GDExtensionTypePtr, FixedArray[GDExtensionConstTypePtr], Int) -> Unit,
+  (GDExtensionTypePtr, FixedArray[GDExtensionConstTypePtr], Int32) -> Unit,
 ]
 
 ///|
@@ -795,9 +795,9 @@ pub(all) struct GDExtensionPropertyInfo {
   type_ : GDExtensionVariantType
   name : GDExtensionStringNamePtr
   class_name : GDExtensionStringNamePtr
-  hint : UInt // uint32_t
+  hint : UInt32 // uint32_t
   hint_string : GDExtensionStringPtr
-  usage : UInt // uint32_t
+  usage : UInt32 // uint32_t
 }
 
 ///|
@@ -827,11 +827,11 @@ pub type GDExtensionPropertyInfoCRef
 pub(all) struct GDExtensionMethodInfo {
   name : GDExtensionStringNamePtr
   return_value : GDExtensionPropertyInfo
-  flags : UInt
+  flags : UInt32
   id : Int64
-  argument_count : UInt
+  argument_count : UInt32
   arguments : FixedArray[GDExtensionPropertyInfo]
-  default_argument_count : UInt
+  default_argument_count : UInt32
   default_arguments : FixedArray[GDExtensionVariantPtr]
 }
 
@@ -843,7 +843,7 @@ pub(all) struct GDExtensionMethodInfo {
 /// typedef const GDExtensionPropertyInfo *(*GDExtensionClassGetPropertyList)(GDExtensionClassInstancePtr p_instance, uint32_t *r_count);
 /// ```
 pub type GDExtensionClassGetPropertyList = FuncRef[
-  (GDExtensionClassInstancePtr, Ref[UInt]) -> GDExtensionPropertyInfoCRef,
+  (GDExtensionClassInstancePtr, Ref[UInt32]) -> GDExtensionPropertyInfoCRef,
 ]
 
 ///|
@@ -865,7 +865,7 @@ pub type GDExtensionClassFreePropertyList = FuncRef[
 /// typedef void (*GDExtensionClassFreePropertyList2)(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list, uint32_t p_count);
 /// ```
 pub type GDExtensionClassFreePropertyList2 = FuncRef[
-  (GDExtensionClassInstancePtr, FixedArray[GDExtensionPropertyInfo], UInt) -> Unit,
+  (GDExtensionClassInstancePtr, FixedArray[GDExtensionPropertyInfo], UInt32) -> Unit,
 ]
 
 ///|
@@ -913,7 +913,7 @@ pub type GDExtensionClassValidateProperty = FuncRef[
 /// typedef void (*GDExtensionClassNotification)(GDExtensionClassInstancePtr p_instance, int32_t p_what); // Deprecated. Use GDExtensionClassNotification2 instead.
 /// ```
 pub type GDExtensionClassNotification = FuncRef[
-  (GDExtensionClassInstancePtr, Int) -> Unit,
+  (GDExtensionClassInstancePtr, Int32) -> Unit,
 ]
 
 ///|
@@ -924,7 +924,7 @@ pub type GDExtensionClassNotification = FuncRef[
 /// typedef void (*GDExtensionClassNotification2)(GDExtensionClassInstancePtr p_instance, int32_t p_what, GDExtensionBool p_reversed);
 /// ```
 pub type GDExtensionClassNotification2 = FuncRef[
-  (GDExtensionClassInstancePtr, Int, GDExtensionBool) -> Unit,
+  (GDExtensionClassInstancePtr, Int32, GDExtensionBool) -> Unit,
 ]
 
 ///|
@@ -1038,7 +1038,7 @@ pub type GDExtensionClassGetVirtual = FuncRef[
 /// typedef GDExtensionClassCallVirtual (*GDExtensionClassGetVirtual2)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name, uint32_t p_hash);
 /// ```
 pub type GDExtensionClassGetVirtual2 = FuncRef[
-  (VoidPtr, GDExtensionConstStringNamePtr, UInt) -> GDExtensionClassCallVirtual,
+  (VoidPtr, GDExtensionConstStringNamePtr, UInt32) -> GDExtensionClassCallVirtual,
 ]
 
 ///|
@@ -1060,7 +1060,7 @@ pub type GDExtensionClassGetVirtualCallData = FuncRef[
 /// typedef void *(*GDExtensionClassGetVirtualCallData2)(void *p_class_userdata, GDExtensionConstStringNamePtr p_name, uint32_t p_hash);
 /// ```
 pub type GDExtensionClassGetVirtualCallData2 = FuncRef[
-  (VoidPtr, GDExtensionConstStringNamePtr, UInt) -> VoidPtr,
+  (VoidPtr, GDExtensionConstStringNamePtr, UInt32) -> VoidPtr,
 ]
 
 ///|
@@ -1413,7 +1413,7 @@ pub type GDExtensionClassMethodCall = FuncRef[
     VoidPtr,
     GDExtensionClassInstancePtr,
     GDExtensionConstVariantPtr,
-    Int,
+    Int32,
     GDExtensionVariantPtr,
     GDExtensionCallError,
   ) -> Unit,
@@ -1490,14 +1490,14 @@ pub(all) struct GDExtensionClassMethodInfo {
   method_userdata : VoidPtr
   call_func : GDExtensionClassMethodCall
   ptrcall_func : GDExtensionClassMethodPtrCall
-  method_flags : UInt // uint32_t
+  method_flags : UInt32 // uint32_t
   has_return_value : GDExtensionBool
   return_value_info : GDExtensionPropertyInfo
   return_value_metadata : GDExtensionClassMethodArgumentMetadata
-  argument_count : UInt // uint32_t
+  argument_count : UInt32 // uint32_t
   arguments_info : GDExtensionPropertyInfo
   arguments_metadata : GDExtensionClassMethodArgumentMetadata
-  default_argument_count : UInt // uint32_t
+  default_argument_count : UInt32 // uint32_t
   default_arguments : GDExtensionVariantPtr
 }
 
@@ -1520,10 +1520,10 @@ pub(all) struct GDExtensionClassMethodInfo {
 /// ```
 pub(all) struct GDExtensionClassVirtualMethodInfo {
   name : GDExtensionStringNamePtr
-  method_flags : UInt // uint32_t
+  method_flags : UInt32 // uint32_t
   return_value : GDExtensionPropertyInfo
   return_value_metadata : GDExtensionClassMethodArgumentMetadata
-  argument_count : UInt // uint32_t
+  argument_count : UInt32 // uint32_t
   arguments : GDExtensionPropertyInfo
   arguments_metadata : GDExtensionClassMethodArgumentMetadata
 }
@@ -1572,7 +1572,7 @@ pub type GDExtensionCallableCustomFree = FuncRef[(VoidPtr) -> Unit]
 /// ```c
 /// typedef uint32_t (*GDExtensionCallableCustomHash)(void *callable_userdata);
 /// ```
-pub type GDExtensionCallableCustomHash = FuncRef[(VoidPtr) -> UInt]
+pub type GDExtensionCallableCustomHash = FuncRef[(VoidPtr) -> UInt32]
 
 ///|
 ///
@@ -1767,7 +1767,7 @@ pub type GDExtensionScriptInstanceGet = FuncRef[
 /// typedef const GDExtensionPropertyInfo *(*GDExtensionScriptInstanceGetPropertyList)(GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count);
 /// ```
 pub type GDExtensionScriptInstanceGetPropertyList = FuncRef[
-  (GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionPropertyInfo,
+  (GDExtensionScriptInstanceDataPtr, UInt32) -> GDExtensionPropertyInfo,
 ]
 
 ///|
@@ -1789,7 +1789,7 @@ pub type GDExtensionScriptInstanceFreePropertyList = FuncRef[
 /// typedef void (*GDExtensionScriptInstanceFreePropertyList2)(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionPropertyInfo *p_list, uint32_t p_count);
 /// ```
 pub type GDExtensionScriptInstanceFreePropertyList2 = FuncRef[
-  (GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo, UInt) -> Unit,
+  (GDExtensionScriptInstanceDataPtr, GDExtensionPropertyInfo, UInt32) -> Unit,
 ]
 
 ///|
@@ -1899,7 +1899,7 @@ pub type GDExtensionScriptInstanceGetPropertyState = FuncRef[
 /// typedef const GDExtensionMethodInfo *(*GDExtensionScriptInstanceGetMethodList)(GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count);
 /// ```
 pub type GDExtensionScriptInstanceGetMethodList = FuncRef[
-  (GDExtensionScriptInstanceDataPtr, UInt) -> GDExtensionMethodInfo,
+  (GDExtensionScriptInstanceDataPtr, UInt32) -> GDExtensionMethodInfo,
 ]
 
 ///|
@@ -1921,7 +1921,7 @@ pub type GDExtensionScriptInstanceFreeMethodList = FuncRef[
 /// typedef void (*GDExtensionScriptInstanceFreeMethodList2)(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionMethodInfo *p_list, uint32_t p_count);
 /// ```
 pub type GDExtensionScriptInstanceFreeMethodList2 = FuncRef[
-  (GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo, UInt) -> Unit,
+  (GDExtensionScriptInstanceDataPtr, GDExtensionMethodInfo, UInt32) -> Unit,
 ]
 
 ///|
@@ -1976,7 +1976,7 @@ pub type GDExtensionScriptInstanceCall = FuncRef[
 /// typedef void (*GDExtensionScriptInstanceNotification)(GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what); // Deprecated. Use GDExtensionScriptInstanceNotification2 instead.
 /// ```
 pub type GDExtensionScriptInstanceNotification = FuncRef[
-  (GDExtensionScriptInstanceDataPtr, Int) -> Unit,
+  (GDExtensionScriptInstanceDataPtr, Int32) -> Unit,
 ]
 
 ///|
@@ -1987,7 +1987,7 @@ pub type GDExtensionScriptInstanceNotification = FuncRef[
 /// typedef void (*GDExtensionScriptInstanceNotification2)(GDExtensionScriptInstanceDataPtr p_instance, int32_t p_what, GDExtensionBool p_reversed);
 /// ```
 pub type GDExtensionScriptInstanceNotification2 = FuncRef[
-  (GDExtensionScriptInstanceDataPtr, Int, GDExtensionBool) -> Unit,
+  (GDExtensionScriptInstanceDataPtr, Int32, GDExtensionBool) -> Unit,
 ]
 
 ///|
@@ -2434,9 +2434,9 @@ pub type GDExtensionInitializationFunction = FuncRef[
 /// } GDExtensionGodotVersion;
 /// ```
 pub(all) struct GDExtensionGodotVersion {
-  major : UInt
-  minor : UInt
-  patch : UInt
+  major : UInt32
+  minor : UInt32
+  patch : UInt32
   string : Bytes // Pointer to a null-terminated string containing the version as a human-readable string.
 }
 
@@ -2472,7 +2472,7 @@ pub type GDExtensionInterfaceGetGodotVersion = FuncRef[
 /// ```
 /// typedef void *(*GDExtensionInterfaceMemAlloc)(size_t p_bytes);
 /// ```
-pub type GDExtensionInterfaceMemAlloc = FuncRef[(UInt) -> VoidPtr]
+pub type GDExtensionInterfaceMemAlloc = FuncRef[(UInt32) -> VoidPtr]
 
 ///|
 /// @name mem_realloc
@@ -2490,7 +2490,7 @@ pub type GDExtensionInterfaceMemAlloc = FuncRef[(UInt) -> VoidPtr]
 /// ```c
 /// typedef void *(*GDExtensionInterfaceMemRealloc)(void *p_ptr, size_t p_bytes);
 /// ```
-pub type GDExtensionInterfaceMemRealloc = FuncRef[(VoidPtr, UInt) -> VoidPtr]
+pub type GDExtensionInterfaceMemRealloc = FuncRef[(VoidPtr, UInt32) -> VoidPtr]
 
 ///|
 /// @name mem_free
@@ -2530,7 +2530,7 @@ pub type GDExtensionInterfaceMemFree = FuncRef[(VoidPtr) -> Unit]
 /// 	GDExtensionBool p_editor_notify);
 /// ```
 pub type GDExtensionInterfacePrintError = FuncRef[
-  (Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit,
+  (Bytes, Bytes, Bytes, Int32, GDExtensionBool) -> Unit,
 ]
 
 ///|
@@ -2558,7 +2558,7 @@ pub type GDExtensionInterfacePrintError = FuncRef[
 ///   GDExtensionBool p_editor_notify);
 /// ```
 pub type GDExtensionInterfacePrintErrorWithMessage = FuncRef[
-  (Bytes, Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit,
+  (Bytes, Bytes, Bytes, Bytes, Int32, GDExtensionBool) -> Unit,
 ]
 
 ///|
@@ -2584,7 +2584,7 @@ pub type GDExtensionInterfacePrintErrorWithMessage = FuncRef[
 ///   GDExtensionBool p_editor_notify);
 /// ```
 pub type GDExtensionInterfacePrintWarning = FuncRef[
-  (Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit,
+  (Bytes, Bytes, Bytes, Int32, GDExtensionBool) -> Unit,
 ]
 
 ///|
@@ -2612,7 +2612,7 @@ pub type GDExtensionInterfacePrintWarning = FuncRef[
 ///   GDExtensionBool p_editor_notify);
 /// ```
 pub type GDExtensionInterfacePrintWarningWithMessage = FuncRef[
-  (Bytes, Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit,
+  (Bytes, Bytes, Bytes, Bytes, Int32, GDExtensionBool) -> Unit,
 ]
 
 ///|
@@ -2639,7 +2639,7 @@ pub type GDExtensionInterfacePrintWarningWithMessage = FuncRef[
 /// 	GDExtensionBool p_editor_notify);
 /// ```
 pub type GDExtensionInterfacePrintScriptError = FuncRef[
-  (Bytes, Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit,
+  (Bytes, Bytes, Bytes, Bytes, Int32, GDExtensionBool) -> Unit,
 ]
 
 ///|
@@ -2667,7 +2667,7 @@ pub type GDExtensionInterfacePrintScriptError = FuncRef[
 ///   GDExtensionBool p_editor_notify);
 /// ```
 pub type GDExtensionInterfacePrintScriptErrorWithMessage = FuncRef[
-  (Bytes, Bytes, Bytes, Bytes, Int, GDExtensionBool) -> Unit,
+  (Bytes, Bytes, Bytes, Bytes, Int32, GDExtensionBool) -> Unit,
 ]
 
 ///|
@@ -2774,7 +2774,7 @@ pub type GDExtensionInterfaceVariantCall = FuncRef[
     GDExtensionVariantPtr,
     GDExtensionConstStringNamePtr,
     FixedArray[GDExtensionConstVariantPtr],
-    Int,
+    Int32,
     GDExtensionUninitializedVariantPtr,
     GDExtensionCallError,
   ) -> Unit,
@@ -2811,7 +2811,7 @@ pub type GDExtensionInterfaceVariantCallStatic = FuncRef[
     GDExtensionVariantType,
     GDExtensionConstStringNamePtr,
     FixedArray[GDExtensionConstVariantPtr],
-    Int,
+    Int32,
     GDExtensionUninitializedVariantPtr,
     GDExtensionCallError,
   ) -> Unit,
@@ -3547,7 +3547,7 @@ pub type GDExtensionInterfaceVariantGetPtrBuiltinMethod = FuncRef[
 /// typedef GDExtensionPtrConstructor (*GDExtensionInterfaceVariantGetPtrConstructor)(GDExtensionVariantType p_type, int32_t p_constructor);
 /// ```
 pub type GDExtensionInterfaceVariantGetPtrConstructor = FuncRef[
-  (GDExtensionVariantType, Int) -> GDExtensionPtrConstructor,
+  (GDExtensionVariantType, Int32) -> GDExtensionPtrConstructor,
 ]
 
 ///|
@@ -3591,7 +3591,7 @@ pub type GDExtensionInterfaceVariantConstruct = FuncRef[
     GDExtensionVariantType,
     GDExtensionUninitializedVariantPtr,
     FixedArray[GDExtensionConstVariantPtr],
-    Int,
+    Int32,
     GDExtensionCallError,
   ) -> Unit,
 ]
@@ -4483,10 +4483,10 @@ pub type GDExtensionInterfaceImagePtr = FuncRef[(GDExtensionObjectPtr) -> Bytes]
 pub type GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask = FuncRef[
   (
     GDExtensionObjectPtr,
-    FuncRef[(Unit, UInt) -> Unit],
+    FuncRef[(Unit, UInt32) -> Unit],
     VoidPtr,
-    Int,
-    Int,
+    Int32,
+    Int32,
     GDExtensionBool,
     GDExtensionConstStringPtr,
   ) -> Int64,
@@ -4665,7 +4665,7 @@ pub type GDExtensionInterfacePackedFloat64ArrayOperatorIndexConst = FuncRef[
 /// typedef int32_t *(*GDExtensionInterfacePackedInt32ArrayOperatorIndex)(GDExtensionTypePtr p_self, GDExtensionInt p_index);
 /// ```
 pub type GDExtensionInterfacePackedInt32ArrayOperatorIndex = FuncRef[
-  (GDExtensionTypePtr, GDExtensionInt) -> Int,
+  (GDExtensionTypePtr, GDExtensionInt) -> Int32,
 ]
 
 ///|
@@ -4685,7 +4685,7 @@ pub type GDExtensionInterfacePackedInt32ArrayOperatorIndex = FuncRef[
 /// typedef const int32_t *(*GDExtensionInterfacePackedInt32ArrayOperatorIndexConst)(GDExtensionConstTypePtr p_self, GDExtensionInt p_index);
 /// ```
 pub type GDExtensionInterfacePackedInt32ArrayOperatorIndexConst = FuncRef[
-  (GDExtensionConstTypePtr, GDExtensionInt) -> Int,
+  (GDExtensionConstTypePtr, GDExtensionInt) -> Int32,
 ]
 
 ///|
